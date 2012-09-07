@@ -141,8 +141,8 @@ endif
 
 call s:HIx('VisualNOS',      {'guibg': s:greys[4]})
 call s:HIx('Visual',         {'guibg': s:greys[4]})
-call s:HI('Search',          {'guifg': s:black, 'guibg': s:sunny})
-call s:HI('IncSearch',       {'guifg': s:black, 'guibg': s:gold})
+call s:HI('Search',          {'guifg': s:black, 'guibg': s:gold})
+call s:HI('IncSearch',       {'guifg': s:black, 'guibg': s:sunny})
 
 call s:HI('Pmenu',           {'guifg': s:black, 'guibg': s:gold})
 call s:HI('PmenuSel',        {'guifg': s:gold, 'guibg': s:black, 'gui': 'bold'})
@@ -158,6 +158,7 @@ call s:HI('Underlined',      {'gui': 'underline'})
 
 call s:HI('Directory',       {'guifg': s:lime})
 call s:HI('Question',        {'guifg': s:lime})
+call s:HI('MoreMsg',         {'guifg': s:lime})
   
 call s:HI('WildMenu',        {'guifg': s:black, 'guibg': s:lilac, 'gui': 'bold'})
 
@@ -165,9 +166,36 @@ call s:HI('Title',           {'gui': 'underline'})
 
 call s:HIx('Tag',            {'gui': 'bold'})
 
-" Look into: MoreMsg
-
 "*** PYTHON ***
 call s:HI('pythonDecorator',     {'guifg': s:cerise})
 call s:HI('pythonException',     {'guifg': s:lime, 'gui': 'bold'})
 call s:HI('pythonExceptions',    {'guifg': s:lime})
+
+"*** XML ***
+call s:HI('xmlProcessingDelim',       {'guifg': s:brick})
+call s:HI('xmlNamespace',             {'guifg': s:gold})
+call s:HI('xmlTag',                   {'guifg': s:gold})
+call s:HI('xmlTagName',               {'guifg': s:gold})
+call s:HI('xmlEndTag',                {'guifg': s:gold})
+call s:HI('xmlAttrib',                {'guifg': s:brick})
+call s:HI('xmlAttribPunct',           {'guifg': s:brick})
+call s:HI('xmlEntity',                {'guifg': s:lilac, 'gui': 'bold'})
+call s:HI('xmlEntityPunct',           {'guifg': s:lilac})
+
+"*** HTML ***
+call s:HI('htmlTagName',              {'guifg': s:gold})
+call s:HI('htmlTag',                  {'guifg': s:gold})
+call s:HI('htmlTagN',                 {'guifg': s:gold})
+call s:HI('htmlH1',                   {'gui': 'bold'})
+call s:HI('htmlH2',                   {'gui': 'bold'})
+call s:HI('htmlH3',                   {'gui': 'italic'})
+call s:HI('htmlTagN',                 {'guifg': s:gold})
+call s:HI('htmlScriptTag',            {'guifg': s:lime})
+
+"*** minibufexpl ***
+call s:HI('MBENormal',                 {'guifg': s:greys[1]})
+call s:HI('MBEVisibleNormal',          {'guifg': s:white, 'gui': 'bold'})
+call s:HI('MBEVisibleActive',          {'guifg': s:frost, 'gui': 'bold'})
+call s:HI('MBEChanged',                {'guifg': s:greys[1], 'gui': 'italic'})
+call s:HI('MBEVisibleChanged',         {'guifg': s:white, 'gui': 'bold,italic'})
+call s:HI('MBEVisibleChangedActive',   {'guifg': s:frost, 'gui': 'bold,italic'})

@@ -1,0 +1,12 @@
+{
+  "name" : "colorschemer",
+  "version" : "1.0",
+  "author" : "Richard Emberson <richard . emberson at gmail com>",
+  "maintainer" : "Richard Emberson <richard . emberson at gmail com>",
+  "repository" : {"type": "git", "url":
+"git://github.com/megaannum/colorschemer.git", "branch" : "master"},
+  "dependencies" : {
+    "self": {}
+  },
+  "description" : "Manage Vim color schemes"
+}
