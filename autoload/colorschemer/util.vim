@@ -363,7 +363,7 @@ function! colorschemer#util#GuiToCTerm(rgbtxt)
       let tmpStr = printf('%02x%02x%02x',rn,gn,bn)
 
       if rgbtxt == tmpStr
-        return forms#color#term#ConvertRGBTxt_2_Int(l:dict.attrs.guibg)
+        return forms#color#term#ConvertRGBTxt_2_Int(rgbtxt)
       endif
     endif
   endif
