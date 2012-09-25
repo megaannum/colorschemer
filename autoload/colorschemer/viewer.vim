@@ -470,6 +470,16 @@ function! s:TransformTestFiles(fileinfos, ...)
 endfunction
 
 "---------------------------------------------------------------------------
+" s:ReadLines: {{{3
+"   Returns List of String 
+"  parameters: None
+"---------------------------------------------------------------------------
+function! s:ReadLines()
+  let l:lines = getline(1, '$')
+  return l:lines
+endfunction
+
+"---------------------------------------------------------------------------
 " s:TransformTestFile: {{{3
 "   Read test file lines, process the lines and write results to
 "     corresponding dot-vim file.
