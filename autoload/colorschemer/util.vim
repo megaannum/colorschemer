@@ -338,9 +338,41 @@ function! colorschemer#util#ResetDarkColorSchemeData()
   let g:forms_reload_highlights_on_colorscheme_event = 1
 endfunction
 
+function! colorschemer#util#GuiToCTerm(rgbtxt)
+  let rgbtxt = tolower(a:rgbtxt)
+  if rgbtxt != ""
+
+    if rgbtxt[0] == '#'
+      let rgbtxt = rgbtxt[1:]
+    endif
+
+    " is it a name
+    let tmpStr = forms#color#util#ConvertName_2_RGB(rgbtxt)
+    if tmpStr != ''
+      " yes it was a name
+      let rgbtxt = tmpStr
+    endif
+
+    if len(rgbtxt) == 6
+      let rs = rgbtxt[0:1]
+      let gs = rgbtxt[2:3]
+      let bs = rgbtxt[4:5]
+      let rn = str2nr(rs, 16)
+      let gn = str2nr(gs, 16)
+      let bn = str2nr(bs, 16)
+      let tmpStr = printf('%02x%02x%02x',rn,gn,bn)
+
+      if rgbtxt == tmpStr
+        return forms#color#term#ConvertRGBTxt_2_Int(l:dict.attrs.guibg)
+      endif
+    endif
+  endif
+
+  return "none"
+endfunction
+
 function! colorschemer#util#IsDark(rgbtxt)
   let rgbtxt = tolower(a:rgbtxt)
-" call forms#logforce("IsDark rgbtxt=" . rgbtxt)
   if rgbtxt != ""
 
     if rgbtxt[0] == '#'
