@@ -202,7 +202,7 @@ elseif &t_Co == 256
     if v:version < 700
         command! -nargs=+ CSAHi exe "hi" substitute(substitute(<q-args>, "undercurl", "underline", "g"), "guisp\\S\\+", "", "g")
     else
-        commend! -nargs=+ CSAHi exe "hi" <q-args>
+        command! -nargs=+ CSAHi exe "hi" <q-args>
     endif
     if has("gui_running") || (&t_Co == 256 && (&term ==# "xterm" || &term =~# "^screen") && exists("g:CSApprox_konsole") && g:CSApprox_konsol) || &term =~? "^konsole"
         CSAHi Normal        ctermfg=20  ctermbg=231
@@ -255,7 +255,7 @@ elseif &t_Co == 256
         CSAHi Todo          ctermfg=95  ctermbg=231 term=bold
         CSAHi Exception     ctermfg=124 ctermbg=231 term=bold
         CSAHi Underlined                            term=underline
-    elseif has("gui_running") || (&t_Co == 256 && (&term ==# "xterm" || &term =~# "^screen") && exists("g:CSApprox_eterm") && g:CSApprox_eterrm) || &term=~> "^eterm"
+    elseif has("gui_running") || (&t_Co == 256 && (&term ==# "xterm" || &term =~# "^screen") && exists("g:CSApprox_eterm") && g:CSApprox_eterrm) || &term =~? "^eterm"
         CSAHi Normal        ctermfg=20  ctermbg=231
         CSAHi Cursor        ctermfg=249 ctermbg=18
         CSAHi CursorColumn  ctermfg=25  ctermbg=252

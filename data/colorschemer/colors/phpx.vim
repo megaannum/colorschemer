@@ -76,7 +76,7 @@ hi Title           guifg=#d700af guibg=bg gui=bold term=bold ctermfg=163
 hi Visual          guifg=#ffffaf guibg=#005f00 gui=reverse term=reverse cterm=reverse ctermfg=229 ctermbg=22 
 hi VisualNOS       guifg=fg guibg=bg gui=bold,underline term=bold,underline cterm=bold,underline 
 hi WarningMsg      guifg=#ff0000 guibg=bg term=standout ctermfg=9 
-hi WildMenu        guifg=#000000 guibg=#ffff00 guifg=fg term=standout ctermfg=0 ctermbg=11 
+hi WildMenu        guifg=#000000 guibg=#ffff00 term=standout ctermfg=0 ctermbg=11 
 hi Folded          guifg=#00ffff guibg=#a8a8a8 term=standout ctermfg=14 ctermbg=248 
 hi FoldColumn      guifg=#00ffff guibg=#bcbcbc term=standout ctermfg=14 ctermbg=250 
 hi DiffAdd         guibg=#000087 guifg=#e4e4e4 term=bold ctermbg=1 ctermbg=18 ctermfg=254 
@@ -128,7 +128,7 @@ hi Title           guifg=#d700af guibg=bg gui=bold term=bold ctermfg=163
 hi Visual          guifg=#ffffaf guibg=#005f00 gui=reverse term=reverse cterm=reverse ctermfg=229 ctermbg=22 
 hi VisualNOS       guifg=fg guibg=bg gui=bold,underline term=bold,underline cterm=bold,underline 
 hi WarningMsg      guifg=#ff0000 guibg=bg term=standout ctermfg=9 
-hi WildMenu        guifg=#000000 guibg=#ffff00 guifg=fg term=standout ctermfg=0 ctermbg=11 
+hi WildMenu        guifg=#000000 guibg=#ffff00 term=standout ctermfg=0 ctermbg=11 
 hi Folded          guifg=#00ffff guibg=#a8a8a8 term=standout ctermfg=14 ctermbg=248 
 hi FoldColumn      guifg=#00ffff guibg=#bcbcbc term=standout ctermfg=14 ctermbg=250 
 hi DiffAdd         guibg=#000087 guifg=#e4e4e4 term=bold ctermbg=1 ctermbg=18 ctermfg=254 

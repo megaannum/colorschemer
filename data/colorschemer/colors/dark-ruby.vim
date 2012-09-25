@@ -5,7 +5,7 @@
 
 " In order to enamble 256 colors on Ubuntu 
 " install: sudo apt-get install ncurses-term
-set term=xterm-256color
+" set term=xterm-256color
 
 set background=dark
 hi clear
@@ -57,26 +57,26 @@ let g:colors_name="dark-ruby"
 " hi Tooltip		ctermfg=red	guifg=lightgray	
 
 " syntax highlighting groups
-hi LineNr		ctermfg=252	guifg=252	
-hi Comment		ctermfg=darkgreen	guifg=28	
-hi Constant		ctermfg=185	guifg=185	
-hi Identifier		ctermfg=252	guifg=252	
-hi Statement		ctermfg=32	guifg=32	
-hi PreProc		ctermfg=252	guifg=252	
-hi Type		ctermfg=167	guifg=167	
-hi Special		ctermfg=252	guifg=252	
+hi LineNr		ctermfg=252	guifg=#d0d0d0	
+hi Comment		ctermfg=darkgreen	guifg=#008700	
+hi Constant		ctermfg=185	guifg=#d7d75f	
+hi Identifier		ctermfg=252	guifg=#d0d0d0	
+hi Statement		ctermfg=32	guifg=#0087d7	
+hi PreProc		ctermfg=252	guifg=#d0d0d0	
+hi Type		ctermfg=167	guifg=#d75f5f	
+hi Special		ctermfg=252	guifg=#d0d0d0	
 hi Underlined		ctermfg=red	guifg=red	
 hi Ignore		ctermfg=red	guifg=red	
-hi Error		ctermfg=160 ctermbg=none	guifg=160	guibg=none
+hi Error		ctermfg=160 ctermbg=NONE	guifg=#d70000	guibg=NONE
 hi Todo			ctermfg=red	guifg=red	
 
 " Alfa version notes: color 'red' means I haven't set color yet
 
-hi rubyEscape			ctermfg=252	guifg=252	
-hi rubyInterpolationDelimiter	ctermfg=252	guifg=252
-hi rubyInterpolation		ctermfg=252	guifg=252	
+hi rubyEscape			ctermfg=252	guifg=#d0d0d0	
+hi rubyInterpolationDelimiter	ctermfg=252	guifg=#d0d0d0
+hi rubyInterpolation		ctermfg=252	guifg=#d0d0d0	
 hi rubyPredefinedVariable	ctermfg=red	guifg=red	
-hi rubyInstanceVariable		ctermfg=66	guifg=66	
+hi rubyInstanceVariable		ctermfg=66	guifg=#5f8787	
 hi rubyClassVariable		ctermfg=red	guifg=red	
 hi rubyGlobalVariable		ctermfg=red	guifg=red	
 hi rubyPredefinedVariable	ctermfg=red	guifg=red	
@@ -87,47 +87,47 @@ hi rubyNestedCurlyBraces	ctermfg=red	guifg=red
 hi rubyNestedAngleBrackets	ctermfg=red	guifg=red	
 hi rubyNestedSquareBrackets	ctermfg=red	guifg=red	
 hi rubyASCIICode		ctermfg=red	guifg=red	
-hi rubyInteger			ctermfg=185	guifg=185	
-hi rubyFloat			ctermfg=185	guifg=185	
+hi rubyInteger			ctermfg=185	guifg=#d7d75f	
+hi rubyFloat			ctermfg=185	guifg=#d7d75f	
 hi rubyLocalVariableOrMethod	ctermfg=red	guifg=red	
 hi rubyBlockArgument		ctermfg=red	guifg=red	
-hi rubyConstant			ctermfg=252	guifg=252	
-hi rubySymbol			ctermfg=167	guifg=167	
+hi rubyConstant			ctermfg=252	guifg=#d0d0d0	
+hi rubySymbol			ctermfg=167	guifg=#d75f5f	
 hi rubyStringSpecial		ctermfg=red	guifg=red	
-hi rubyBlockParameter		ctermfg=252	guifg=252	
+hi rubyBlockParameter		ctermfg=252	guifg=#d0d0d0	
 hi rubyPredefinedConstant	ctermfg=red	guifg=red	
-hi rubyRegexp			ctermfg=167	guifg=167	
-hi rubyString			ctermfg=185	guifg=185	
-hi rubyBoolean			ctermfg=252	guifg=252	
-hi rubyPseudoVariable		ctermfg=252	guifg=252	
+hi rubyRegexp			ctermfg=167	guifg=#d75f5f	
+hi rubyString			ctermfg=185	guifg=#d7d75f	
+hi rubyBoolean			ctermfg=252	guifg=#d0d0d0	
+hi rubyPseudoVariable		ctermfg=252	guifg=#d0d0d0	
 hi rubyMethodDeclaration	ctermfg=red	guifg=red	
 hi rubyClassDeclaration		ctermfg=red	guifg=red	
 hi rubyModuleDeclaration	ctermfg=red	guifg=red	
-hi rubyFunction			ctermfg=252	guifg=252	
-hi rubyDefine			ctermfg=32	guifg=32
-hi rubyClass			ctermfg=25	guifg=25
-hi rubyModule			ctermfg=25	guifg=25
-hi rubyBlock			ctermfg=252	guifg=252	
-hi rubyConditional		ctermfg=81	guifg=81	
-hi rubyRepeat			ctermfg=81	guifg=81
-hi rubyControl			ctermfg=81	guifg=81
+hi rubyFunction			ctermfg=252	guifg=#d0d0d0	
+hi rubyDefine			ctermfg=32	guifg=#0087d7
+hi rubyClass			ctermfg=25	guifg=#005faf
+hi rubyModule			ctermfg=25	guifg=#005faf
+hi rubyBlock			ctermfg=252	guifg=#d0d0d0	
+hi rubyConditional		ctermfg=81	guifg=#5fd7ff	
+hi rubyRepeat			ctermfg=81	guifg=#5fd7ff
+hi rubyControl			ctermfg=81	guifg=#5fd7ff
 hi rubyKeyword			ctermfg=red	guifg=red	
 hi rubyOperator			ctermfg=red	guifg=red	
 hi rubyBeginEnd			ctermfg=red	guifg=red	
-hi rubyAccess			ctermfg=32	guifg=32	
-hi rubyAttribute		ctermfg=252	guifg=252	
+hi rubyAccess			ctermfg=32	guifg=#0087d7	
+hi rubyAttribute		ctermfg=252	guifg=#d0d0d0	
 hi rubyEval			ctermfg=red	guifg=red	
 hi rubyException		ctermfg=red	guifg=red	
-hi rubyInclude			ctermfg=252	guifg=252	
+hi rubyInclude			ctermfg=252	guifg=#d0d0d0	
 hi rubySharpBang		ctermfg=red	guifg=red	
-hi rubyTodo			ctermfg=34	guifg=34	
-hi rubyComment			ctermfg=28	guifg=28
+hi rubyTodo			ctermfg=34	guifg=#00af00
+hi rubyComment			ctermfg=28	guifg=#008700
 hi rubyDocumentation		ctermfg=red	guifg=red	
 hi rubyData			ctermfg=red	guifg=red	
 
-hi railsMethod    ctermfg=107 guifg=107
-hi railsUserClass  ctermfg=107 guifg=107
-hi railsUserMethod  ctermfg=107 guifg=107
+hi railsMethod    ctermfg=107 guifg=#87af5f
+hi railsUserClass  ctermfg=107 guifg=#87af5f
+hi railsUserMethod  ctermfg=107 guifg=#87af5f
 
 " hi rubyRailsError	ctermfg=lightgray	guifg=lightgray	
 " hi rubyRailsDeprecatedMethod	ctermfg=lightgray	guifg=lightgray	
@@ -143,12 +143,12 @@ hi railsUserMethod  ctermfg=107 guifg=107
 "hi htmlValue	ctermfg=lightgray	guifg=lightgray	
 "hi htmlTagN	ctermfg=lightgray	guifg=lightgray	
 "hi htmlTagError	ctermfg=lightgray	guifg=lightgray	
-hi htmlEndTag	ctermfg=25	guifg=25	
+hi htmlEndTag	ctermfg=25	guifg=#005faf	
 "hi htmlArg	ctermfg=lightgray	guifg=lightgray	
 "hi htmlEvent	ctermfg=lightgray	guifg=lightgray	
 "hi htmlCssDefinition	ctermfg=lightgray	guifg=lightgray	
-hi htmlTag	ctermfg=25	guifg=25	
-hi htmlTagName	ctermfg=25	guifg=25	
+hi htmlTag	ctermfg=25	guifg=#005faf	
+hi htmlTagName	ctermfg=25	guifg=#005faf	
 "hi htmlSpecialTagName	ctermfg=lightgray	guifg=lightgray	
 "hi htmlCommentPart	ctermfg=lightgray	guifg=lightgray	
 "hi htmlCommentError	ctermfg=lightgray	guifg=lightgray	
@@ -176,7 +176,7 @@ hi htmlTagName	ctermfg=25	guifg=25
 "hi htmlItalic	ctermfg=lightgray	guifg=lightgray	
 "hi htmlItalicBoldUnderline	ctermfg=lightgray	guifg=lightgray	
 "hi htmlItalicUnderlineBold	ctermfg=lightgray	guifg=lightgray	
-hi htmlH1	ctermfg=25	guifg=25	
+hi htmlH1	ctermfg=25	guifg=#005faf	
 "hi htmlH2	ctermfg=lightgray	guifg=lightgray	
 "hi htmlH3	ctermfg=lightgray	guifg=lightgray	
 "hi htmlH4	ctermfg=lightgray	guifg=lightgray	

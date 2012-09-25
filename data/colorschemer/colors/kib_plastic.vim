@@ -172,7 +172,7 @@ hi StatusLineNC	guibg=#888a85 guifg=#fce94f gui=none
 hi Visual	    guibg=#ff6a6a guifg=#000000             " Selection of text in Visual Mode
 "hi VisualNOS
 hi WarningMsg	guifg=salmon
-hi WildMenu
+" hi WildMenu
 hi Menu        guibg=#ff6a6a guifg=#000000
 "hi Scrollbar   guibg=grey30 guifg=tan
 "hi Tooltip

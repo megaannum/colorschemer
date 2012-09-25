@@ -35,7 +35,7 @@ if v:version >= 700
 	endif
 endif
 highlight Cursor guifg=#FFFF00 guibg=#FF0000 gui=NONE
-highlight link CursorIM cleared
+highlight link CursorIM NONE
 highlight DiffAdd guibg=DarkBlue gui=NONE
 highlight DiffChange guibg=DarkMagenta gui=NONE
 highlight DiffDelete guifg=Blue guibg=DarkCyan gui=bold

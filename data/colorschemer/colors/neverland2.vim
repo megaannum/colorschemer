@@ -106,7 +106,7 @@ hi TabLineSel      guifg=#ffd700 guibg=#1c1c1c
 
 " Support for 256-color terminal
 if &t_Co > 255
-   hi Normal          ctermfg=256 ctermbg=233
+   hi Normal          ctermfg=255 ctermbg=233
    set background=dark
 
    hi Boolean         ctermfg=135

@@ -153,7 +153,7 @@ hi pythonImport   guifg=yellow1 ctermfg=yellow
 "hi pythonUniEscape xxx links to Special
 "hi pythonUniEscapeError xxx links to Error
 "hi pythonUniString xxx links to String
-"hi pythonRawEscape xxx cleared
+"hi pythonRawEscape xxx NONE
 "hi pythonRawString xxx links to String
 "hi pythonUniRawEscape xxx links to Special
 "hi pythonUniRawEscapeError xxx links to Error

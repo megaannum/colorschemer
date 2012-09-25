@@ -37,7 +37,7 @@ if v:version >= 700
 	highlight TabLineSel guifg=#002A5C guibg=#FCB52D gui=bold,underline
 endif
 highlight Cursor guifg=bg guibg=fg gui=NONE
-highlight link CursorIM cleared
+highlight link CursorIM NONE
 highlight DiffAdd guibg=#A1BAD8 gui=NONE
 highlight DiffChange guifg=#002A5C guibg=#7493BE gui=NONE
 highlight DiffDelete guifg=#7493BE guibg=#FCB52D gui=bold
@@ -52,7 +52,7 @@ highlight MatchParen guibg=#A1BAD8 gui=NONE
 highlight ModeMsg guifg=#002A5C gui=bold
 highlight MoreMsg guifg=#002A5C guibg=#A1BAD8 gui=bold
 highlight NonText guifg=#606769 gui=NONE
-highlight Normal guibg=#FFFFFF gui=NONE
+highlight Normal guibg=#FFFFFF guifg=#000000 gui=NONE
 highlight Question guifg=#002A5C guibg=#FCB52D gui=bold
 highlight Search guibg=#FCB52D gui=NONE
 highlight SignColumn guifg=#FCB52D guibg=#A1BAD8 gui=NONE
