@@ -750,7 +750,13 @@ call forms#logforce("colorschemer#viewer#GenerateForm: TOP")
           \ }
 
   let slisttestfiles = forms#newSelectList(attrs)
-  " let boxtestfiles = forms#newBox({ 'body': slisttestfiles })
+  function! slisttestfiles.purpose() dict
+    return [
+        \ "Choose which test file to view.",
+        \ "  Demonstrates syntax highlighting per file type."
+        \ ]
+  endfunction
+
 
   function! SLButtonAction(...) dict
     let pos = self.slisttestfiles.__pos
@@ -782,6 +788,12 @@ call forms#logforce("colorschemer#viewer#GenerateForm: TOP")
   let uptfbutton = forms#newButton({
                            \ 'body': uptflabel,
                            \ 'action': action})
+  function! uptfbutton.purpose() dict
+    return [
+        \ "Step upward through test files.",
+        \ "  Wraps to bottom when top is reached."
+        \ ]
+  endfunction
 
   let downarrowch = arrowchars[3]
   let downtflabel = forms#newLabel({ 'text': "<".downarrowch.">"})
@@ -791,6 +803,12 @@ call forms#logforce("colorschemer#viewer#GenerateForm: TOP")
   let downtfbutton = forms#newButton({
                            \ 'body': downtflabel,
                            \ 'action': action})
+  function! downtfbutton.purpose() dict
+    return [
+        \ "Step downward through test files.",
+        \ "  Wraps to bottom when top is reached."
+        \ ]
+  endfunction
 
   let vspace = forms#newVSpace({'size': 2})
   let vpolySLButtons = forms#newVPoly({ 'children': [
@@ -867,6 +885,12 @@ let g:selected_colorscheme = cs
            \ 'on_selection_action' : pdl_action
            \ }
   let cspopdown = forms#newPopDownList(attrs)
+  function! cspopdown.purpose() dict
+    return [
+        \ "Pop down list allowing selection of color schemes.",
+        \ "  There maybe hundreds of color schemes to choose from."
+        \ ]
+  endfunction
   let pdl_action.cspopdown = cspopdown
 
   function! CSButtonAction(...) dict
@@ -906,6 +930,12 @@ let g:selected_colorscheme = cs
   let upcsbutton = forms#newButton({
                            \ 'body': upcslabel,
                            \ 'action': action})
+  function! upcsbutton.purpose() dict
+    return [
+        \ "Step upward through color schemes.",
+        \ "  Wraps to bottom when top is reached."
+        \ ]
+  endfunction
 
   let downcslabel = forms#newLabel({ 'text': "<".downarrowch.">"})
   let action = forms#newAction({ 'execute': function("CSButtonAction")})
@@ -914,6 +944,12 @@ let g:selected_colorscheme = cs
   let downcsbutton = forms#newButton({
                            \ 'body': downcslabel,
                            \ 'action': action})
+  function! downcsbutton.purpose() dict
+    return [
+        \ "Step downward through color schemes.",
+        \ "  Wraps to bottom when top is reached."
+        \ ]
+  endfunction
 
   let vspace = forms#newVSpace({'size': 1})
   let vpolyCSButtons = forms#newVPoly({ 'children': [
