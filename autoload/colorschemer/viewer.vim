@@ -535,11 +535,11 @@ function! s:WriteFile(fileinfo)
   endif
   while cnt < len
     let l = l:tflines[cnt]
-    let l = escape(l, "'\"\\")
     let llen = len(l)
     if llen > g:max_columns
       let l = strpart(l, 0, g:max_columns)
     endif
+    let l = escape(l, "'\"\\")
 
     let cnt += 1
 
