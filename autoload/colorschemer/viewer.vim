@@ -1038,7 +1038,7 @@ function! colorschemer#viewer#ViewerDistilledLight()
 endfunction
 
 function! colorschemer#viewer#ViewerHomeColors()
-  let rtps = split(&rtp, "\n")
+  let rtps = split(&rtp, ",")
   let cpath = rtps[0]
   call colorschemer#viewer#Viewer(cpath)
 endfunction
