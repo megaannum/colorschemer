@@ -715,7 +715,7 @@ endfunction
 "  parameters: None 
 "---------------------------------------------------------------------------
 function! colorschemer#viewer#GenerateForm()
-call forms#logforce("colorschemer#viewer#GenerateForm: TOP " . expand('<sfile>'))
+call forms#logforce("colorschemer#viewer#GenerateForm: TOP")
   " get test files
   let l:testfiles = s:GetTestFiles()
 
@@ -861,7 +861,6 @@ let g:selected_colorscheme = cs
     let cnt += 1
   endfor
   unlet l:names l:n
-  " TODO set pos to l:pos
   let attrs = {
            \ 'choices' : choices,
            \ 'pos' : l:pos,
@@ -888,12 +887,12 @@ let g:selected_colorscheme = cs
         let pos -= 1
       endif
     endif
-" call forms#logforce("CSButtonAction: pos=".pos)
+    call cspopdown.setSelectionPos(pos)
     let cspopdown.__pos = pos
-    let cspopdown.__slist.__pos = pos
+    let slist.__pos = pos
 
-    call cspopdown.__slist.adjustWinStart()
-    call self.cspopdown.__on_selection_action.execute(pos)
+    call slist.adjustWinStart()
+    call cspopdown.__on_selection_action.execute(pos)
     call forms#ViewerRedrawListAdd(cspopdown)
   endfunction
 
