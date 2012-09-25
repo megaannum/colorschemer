@@ -105,7 +105,8 @@ function! s:GetNormalBackground()
       if has_key(l:dict.attrs, "ctermbg")
         return l:dict.attrs.ctermbg
       elseif has_key(l:dict.attrs, "guibg")
-        return forms#color#term#ConvertRGBTxt_2_Int(l:dict.attrs.guibg)
+        let rgbtxt = l:dict.attrs.guibg
+        return colorschemer#util#GuiToCTerm(rgbtxt)
       endif
     endif
   endif
@@ -137,7 +138,8 @@ function! s:GetNormalForeground()
       if has_key(l:dict.attrs, "ctermfg")
         return l:dict.attrs.ctermfg
       elseif has_key(l:dict.attrs, "guifg")
-        return forms#color#term#ConvertRGBTxt_2_Int(l:dict.attrs.guifg)
+        let rgbtxt = l:dict.attrs.guibg
+        return colorschemer#util#GuiToCTerm(rgbtxt)
       endif
     endif
   endif
