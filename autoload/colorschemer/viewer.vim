@@ -709,13 +709,20 @@ endfunction
 
 
 "---------------------------------------------------------------------------
-" colorschemer#viewer#GenerateForm: {{{3
+" colorschemer#viewer#Viewer: {{{3
 "  Create a Form that controls and displays test files using different
 "    Color Schemes.
-"  parameters: None 
+"  parameters: 
+"    cpath : location of color scheme files (actually, cpath."/".colors)
 "---------------------------------------------------------------------------
-function! colorschemer#viewer#GenerateForm()
-call forms#logforce("colorschemer#viewer#GenerateForm: TOP")
+function! colorschemer#viewer#Viewer(cpath)
+"call forms#logforce("colorschemer#viewer#Viewer: TOP")
+  if ! isdirectory(a:cpath)
+    let msg = "ERROR: colorschemer#viewer#Viewer does not exist: ".a:cpath
+    echo msg
+    return
+  endif
+
   " get test files
   let l:testfiles = s:GetTestFiles()
 
@@ -843,28 +850,24 @@ let g:selected_colorscheme = cs
 
   let pdl_action = forms#newAction({ 'execute': function("GenerateFormPDLAction")})
 
+if 0
   " let cpath="/home/emberson/.vim/data/colorschemer/distilled.cterm/dark"
+  " let cpath="/home/emberson/.vim/data/colorschemer/distilled.cterm/light"
   let rtl = colorschemer#util#GetRunTimeLocation()
   let cpath=rtl . '/' . "data/colorschemer/distilled.cterm/dark"
-
-  " let cpath="/home/emberson/.vim/data/colorschemer/distilled.cterm/light"
-  " <afile>    when executing autocommands, is replaced with the file name
-  "            for a file read or write
-
   let l:rtp = &rtp
   let &rtp=cpath.','.&rtp
-"call forms#logforce("colorschemer#viewer#GenerateForm:  rtp=". string(&rtp))
-
-  "let l:n = globpath(&runtimepath, "colors/*.vim")
   let l:n = globpath(cpath, "colors/*.vim")
+endif
 
-" let start = reltime()
-" call forms#logforce("colorschemer#viewer#GenerateForm:  globpath time=". reltimestr(reltime(start)))
+  let l:rtp = &rtp
+  let &rtp=a:cpath.','.&rtp
+  let l:n = globpath(a:cpath, "colors/*.vim")
 
   " split at NL, Ignore case for VMS and windows, sort on name
   let l:names = sort(map(split(l:n, "\n"), 'substitute(v:val, "\\c.*[/\\\\:\\]]\\([^/\\\\:]*\\)\\.vim", "\\1", "")'), 1)
 
-" call forms#logforce("colorschemer#viewer#GenerateForm:  l:names=". string(l:names))
+" call forms#logforce("colorschemer#viewer#Viewer:  l:names=". string(l:names))
   let choices = []
   let l:cname = s:GetColorSchemeName()
   let l:pos = 0
@@ -998,7 +1001,45 @@ let g:selected_colorscheme = cs
   call form.run()
 endfunction
 
-if 0
-call colorschemer#viewer#GenerateForm()
-finish
-endif
+function! colorschemer#viewer#ViewerDistilledCtermDark()
+  let rtl = colorschemer#util#GetRunTimeLocation()
+  let cpath=rtl . '/' . "data/colorschemer/distilled.cterm/dark"
+  call colorschemer#viewer#Viewer(cpath)
+endfunction
+
+function! colorschemer#viewer#ViewerDistilledCtermLight()
+  let rtl = colorschemer#util#GetRunTimeLocation()
+  let cpath=rtl . '/' . "data/colorschemer/distilled.cterm/light"
+  call colorschemer#viewer#Viewer(cpath)
+endfunction
+
+function! colorschemer#viewer#ViewerDistilledGuiDark()
+  let rtl = colorschemer#util#GetRunTimeLocation()
+  let cpath=rtl . '/' . "data/colorschemer/distilled.gui/dark"
+  call colorschemer#viewer#Viewer(cpath)
+endfunction
+
+function! colorschemer#viewer#ViewerDistilledGuiLight()
+  let rtl = colorschemer#util#GetRunTimeLocation()
+  let cpath=rtl . '/' . "data/colorschemer/distilled.gui/light"
+  call colorschemer#viewer#Viewer(cpath)
+endfunction
+
+function! colorschemer#viewer#ViewerDistilledDark()
+  let rtl = colorschemer#util#GetRunTimeLocation()
+  let cpath=rtl . '/' . "data/colorschemer/distilled/dark"
+  call colorschemer#viewer#Viewer(cpath)
+endfunction
+
+function! colorschemer#viewer#ViewerDistilledLight()
+  let rtl = colorschemer#util#GetRunTimeLocation()
+  let cpath=rtl . '/' . "data/colorschemer/distilled/light"
+  call colorschemer#viewer#Viewer(cpath)
+endfunction
+
+function! colorschemer#viewer#ViewerHomeColors()
+  let rtps = split(&rtp, "\n")
+  let cpath = rtps[0]
+  call colorschemer#viewer#Viewer(cpath)
+endfunction
+

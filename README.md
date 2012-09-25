@@ -107,6 +107,30 @@ I do not use pathogen. An example usage would be welcome.
 
 Ought to work where ever Forms works.
 
+## Running
+
+To run the viewer, execute any of the following.
+
+For distilled color schemes generated using Vim
+
+    call colorschemer#viewer#ViewerDistilledCtermDark()
+    call colorschemer#viewer#ViewerDistilledCtermLight()
+
+For distilled color schemes generated using GVim
+
+    call colorschemer#viewer#ViewerDistilledGuiDark()
+    call colorschemer#viewer#ViewerDistilledGuiLight()
+
+For distilled color schemes generated a new by end user
+
+    call colorschemer#viewer#ViewerDistilledDark()
+    call colorschemer#viewer#ViewerDistilledLight()
+
+For color schemes found in user's $HOME/.vim/colors or $HOME/vimfiles/colors
+
+    call colorschemer#viewer#ViewerHomeColors()
+
+
 ## Tutorial
 
 None available yet.
