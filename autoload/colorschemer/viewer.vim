@@ -813,11 +813,10 @@ let g:selected_colorscheme = cs
 
   let pdl_action = forms#newAction({ 'execute': function("GenerateFormPDLAction")})
 
-  " get NL separated string with file names
-  " let l:n = globpath(&runtimepath, "colors/*.vim")
-  " let l:n = globpath("/home/emberson/.vim/tmp", "/*.vim")
-  
-  let cpath="/home/emberson/.vim/data/colorschemer/distilled.cterm/dark"
+  " let cpath="/home/emberson/.vim/data/colorschemer/distilled.cterm/dark"
+  let rtl = colorschemer#util#GetRunTimeLocation()
+  let cpath=rtl . '/' . "data/colorschemer/distilled.cterm/dark"
+
   " let cpath="/home/emberson/.vim/data/colorschemer/distilled.cterm/light"
   " <afile>    when executing autocommands, is replaced with the file name
   "            for a file read or write

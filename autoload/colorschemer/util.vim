@@ -18,6 +18,27 @@
 "   DDDDDDD
 " ============================================================================
 
+function! s:GetRunTimeLocation(dir)
+  let dir = a:dir
+  while dir != "/"
+    let t = fnamemodify(dir, ':t')
+    let dir = fnamemodify(dir, ':h')
+
+    if t == "autoload"
+      return dir
+    endif
+  endwhile
+  return ""
+endfunction
+
+let s:fullpath=expand('<sfile>:p')
+let s:fulldir=fnamemodify(s:fullpath, ':h')
+let s:runtimelocation = s:GetRunTimeLocation(s:fulldir)
+
+function! colorschemer#util#GetRunTimeLocation()
+  return s:runtimelocation
+endfunction
+
 
 "---------------------------------------------------------------------------
 " colorschemer#util#GetMatchRange: {{{3

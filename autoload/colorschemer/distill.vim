@@ -1622,8 +1622,9 @@ endfunction
 
 
 function! colorschemer#distill#Some()
-let infiledir="/home/emberson/.vim/data/colorschemer/"
-let outfiledir="/home/emberson/.vim/test"
+  let rtl = colorschemer#util#GetRunTimeLocation()
+  let infiledir=rtl . '/' . "data/colorschemer/"
+  let outfiledir=rtl . '/' . "test"
 
 if 0
 let csname="256-grayvim"
@@ -1650,10 +1651,15 @@ endif
 
 endfunction
 
-
+function! colorschemer#distill#Test()
+  let rtl = colorschemer#util#GetRunTimeLocation()
+  call forms#logforce("rtlocation=".rtl) 
+endfunction
 
 function! colorschemer#distill#ALL()
-  let infiledir="/home/emberson/.vim/data/colorschemer"
-  let outfiledir="/home/emberson/.vim/data/colorschemer/distilled"
+  let rtl = colorschemer#util#GetRunTimeLocation()
+  let infiledir=rtl . '/' . "data/colorschemer"
+  let outfiledir=rtl . '/' . "data/colorschemer/distilled"
   call colorschemer#distill#MakeDistilledColorSchemeFiles(infiledir, outfiledir)
 endfunction
+
