@@ -13,8 +13,20 @@
 "
 " ============================================================================
 " Intro: {{{1
-" CCCCCCCCCCC
-"   DDDDDDD
+" Takes "normal" color scheme files and creates "distilled" versions
+"   which are output do 'light' or 'dark'  sub-directories depending
+"   upon each color scheme's background setting and whether or not
+"   the scheme's Normal highlight groups ctermbg and guibg values
+"   are 'light' or 'dark'.
+"   In addition, each distilled color scheme file has the following sections; 
+"     if has("gui_running")
+"     elseif &t_Co == 256
+"     elseif &t_Co == 88
+"     elseif &t_Co == 16
+"     else " &t_Co == 8
+"     endif
+"   with highlight attribute values generated specifically for the 
+"   terminal Vim or GVim type.
 " ============================================================================
 
 
@@ -34,8 +46,14 @@ endif
 
 
 
+"---------------------------------------------------------------------------
+" s:MakeDefaultLightColorSchemeData: {{{3
+"   Return Dictionary of the highlights of the default color scheme
+"     when background is set to 'light'
+"   Creates new Dictionary and re-captures highlight each time called.
+"  parameters: None
+"---------------------------------------------------------------------------
 function!  s:MakeDefaultLightColorSchemeData()
-"call forms#logforce("s:MakeDefaultLightColorSchemeData: TOP background=".&background)
   let g:forms_reload_highlights_on_colorscheme_event = 0
   if exists("g;colors_name")
     unlet g:colors_name
@@ -59,8 +77,14 @@ function!  s:MakeDefaultLightColorSchemeData()
   return csdefault
 endfunction
 
+"---------------------------------------------------------------------------
+" s:MakeDefaultDarkColorSchemeData: {{{3
+"   Return Dictionary of the highlights of the default color scheme
+"     when background is set to 'dark'
+"   Creates new Dictionary and re-captures highlight each time called.
+"  parameters: None
+"---------------------------------------------------------------------------
 function!  s:MakeDefaultDarkColorSchemeData()
-"call forms#logforce("s:MakeDefaultDarkColorSchemeData: TOP background=".&background)
   let g:forms_reload_highlights_on_colorscheme_event = 0
   if exists("g;colors_name")
     unlet g:colors_name
@@ -84,6 +108,14 @@ function!  s:MakeDefaultDarkColorSchemeData()
   return csdefault
 endfunction
 
+"---------------------------------------------------------------------------
+" s:MakeDefaultColorSchemeData: {{{3
+"   Return Dictionary of the highlights of the default color scheme
+"     when background is set to parameter value.
+"   Creates new Dictionary and re-captures highlight each time called.
+"  parameters: 
+"     background : String either 'light' or 'dark'
+"---------------------------------------------------------------------------
 function! s:MakeDefaultColorSchemeData(background)
   if a:background == 'light'
     return s:MakeDefaultLightColorSchemeData()
@@ -98,6 +130,13 @@ function! s:MakeDefaultColorSchemeData(background)
   endif
 endfunction
 
+"---------------------------------------------------------------------------
+" s:GetDefaultLightColorSchemeData: {{{3
+"   Return Dictionary of the highlights of the default color scheme
+"     when background is set to 'light.'
+"   Creates if it does not exist and caches value
+"  parameters: None
+"---------------------------------------------------------------------------
 function! s:GetDefaultLightColorSchemeData()
 " call forms#logforce("s:GetDefaultLightColorSchemeData: ")
   if ! exists("s:DefaultLightColorSchemeData")
@@ -106,6 +145,13 @@ function! s:GetDefaultLightColorSchemeData()
   return s:DefaultLightColorSchemeData
 endfunction
 
+"---------------------------------------------------------------------------
+" s:GetDefaultDarkColorSchemeData: {{{3
+"   Return Dictionary of the highlights of the default color scheme
+"     when background is set to 'dark.'
+"   Creates if it does not exist and caches value
+"  parameters: None
+"---------------------------------------------------------------------------
 function! s:GetDefaultDarkColorSchemeData()
 " call forms#logforce("s:GetDefaultDarkColorSchemeData: ")
   if ! exists("s:DefaultDarkColorSchemeData")
@@ -114,6 +160,14 @@ function! s:GetDefaultDarkColorSchemeData()
   return s:DefaultDarkColorSchemeData
 endfunction
 
+"---------------------------------------------------------------------------
+" s:GetDefaultDarkColorScheme: {{{3
+"   Return Dictionary of the highlights of the default color scheme
+"     when background is set to parameter value.
+"   Creates if it does not exist and caches value
+"  parameters:
+"     background : String either 'light' or 'dark'
+"---------------------------------------------------------------------------
 function! s:GetDefaultColorSchemeData(background)
   if a:background == 'light'
     return s:GetDefaultLightColorSchemeData()
@@ -128,6 +182,9 @@ function! s:GetDefaultColorSchemeData(background)
   endif
 endfunction
 
+"---------------------------------------------------------------------------
+" create and cache default color scheme highlights, both dark and light
+"---------------------------------------------------------------------------
 if ! exists("s:DefaultDarkColorSchemeData")
   call s:GetDefaultDarkColorSchemeData()
 endif
@@ -135,10 +192,18 @@ if ! exists("s:DefaultLightColorSchemeData")
   call s:GetDefaultLightColorSchemeData()
 endif
 
+"---------------------------------------------------------------------------
+" s:DistillColorScheme: {{{3
+"   Input Dictionary of highlights is modified so that only highlight 
+"     values that are not inherited from the default color scheme
+"     highlight Dictionary (light/dark as appropriate) remain.
+"  parameters:
+"     cs : Dictionary of color scheme to be distilled
+"---------------------------------------------------------------------------
 function! s:DistillColorScheme(cs)
   let cs = a:cs
   let csname = cs.csname
-call forms#logforce("s:DistillColorScheme: csname=". csname)
+" call forms#logforce("s:DistillColorScheme: csname=". csname)
 " call forms#logforce("s:DistillColorScheme: cs=". string(cs))
   let csgroups = cs.groups
   let l:background = cs.background
@@ -183,9 +248,9 @@ call forms#logforce("s:DistillColorScheme: csname=". csname)
   "   endif
   " endfor 
   for group in keys(csgroups)
-call forms#logforce("s:DistillColorScheme: group=". group)
+" call forms#logforce("s:DistillColorScheme: group=". group)
     let cs_values = csgroups[group]
-call forms#logforce("s:DistillColorScheme: cs_values=". string(cs_values))
+" call forms#logforce("s:DistillColorScheme: cs_values=". string(cs_values))
     if has_key(cs_values, "attrs")
       let cs_attrs = cs_values["attrs"]
       let attrs = {}
@@ -198,7 +263,7 @@ call forms#logforce("s:DistillColorScheme: cs_values=". string(cs_values))
             let l:value = cs_attrs[key]
 "call forms#logforce("s:DistillColorScheme: l:value=". l:value)
             if key == "links"
-call forms#logforce("s:DistillColorScheme: ERROR 1 XXXXXXXX links: l:value=". l:value)
+" call forms#logforce("s:DistillColorScheme: ERROR 1 XXXXXXXX links: l:value=". l:value)
   " NOTE This is no longer needed ???
   "echo "group=".group." LINK to ".l:value
               let links[group] = l:value
@@ -210,31 +275,31 @@ call forms#logforce("s:DistillColorScheme: ERROR 1 XXXXXXXX links: l:value=". l:
         endfor
 
       else " in default
-call forms#logforce("s:DistillColorScheme: default has group")
+" call forms#logforce("s:DistillColorScheme: default has group")
         let default_values = csdefaultgroups[group]
-call forms#logforce("s:DistillColorScheme: default_values=". string(default_values))
+" call forms#logforce("s:DistillColorScheme: default_values=". string(default_values))
         if has_key(default_values, "attrs")
-call forms#logforce("s:DistillColorScheme: default_values has attrs")
+" call forms#logforce("s:DistillColorScheme: default_values has attrs")
           let default_attrs = default_values["attrs"]
           for key in keys
-call forms#logforce("s:DistillColorScheme: key=". key)
+" call forms#logforce("s:DistillColorScheme: key=". key)
             if has_key(cs_attrs, key)
-call forms#logforce("s:DistillColorScheme: cs_value has key")
+" call forms#logforce("s:DistillColorScheme: cs_value has key")
               let l:value = cs_attrs[key]
-call forms#logforce("s:DistillColorScheme: value=" . l:value)
+" call forms#logforce("s:DistillColorScheme: value=" . l:value)
               if has_key(default_attrs, key)
                 let dvalue = default_attrs[key]
-call forms#logforce("s:DistillColorScheme: dvalue=" . dvalue)
+" call forms#logforce("s:DistillColorScheme: dvalue=" . dvalue)
                 if l:value == dvalue
                   if key == "links"
-call forms#logforce("s:DistillColorScheme: ERROR 2 XXXXXXXX links: l:value=". l:value)
+" call forms#logforce("s:DistillColorScheme: ERROR 2 XXXXXXXX links: l:value=". l:value)
                     let links[group] = l:value
                   else
                     let attrs[key] = "INHERIT"
                   endif
                 else
                   if key == "links"
-call forms#logforce("s:DistillColorScheme: ERROR 2 XXXXXXXX links: l:value=". l:value)
+" call forms#logforce("s:DistillColorScheme: ERROR 2 XXXXXXXX links: l:value=". l:value)
                     let links[group] = l:value
                   else
                     let attrs[key] = l:value
@@ -242,7 +307,7 @@ call forms#logforce("s:DistillColorScheme: ERROR 2 XXXXXXXX links: l:value=". l:
                 endif
               else
                 if key == "links"
-call forms#logforce("s:DistillColorScheme: ERROR 3 XXXXXXXX links: l:value=". l:value)
+" call forms#logforce("s:DistillColorScheme: ERROR 3 XXXXXXXX links: l:value=". l:value)
                   let links[group] = l:value
                 else
                   let attrs[key] = l:value
@@ -251,22 +316,21 @@ call forms#logforce("s:DistillColorScheme: ERROR 3 XXXXXXXX links: l:value=". l:
               unlet l:value
 
             elseif has_key(default_attrs, key)
-call forms#logforce("s:DistillColorScheme: default_value has key, use it")
-call forms#logforce("s:DistillColorScheme: dvalue=" . default_attrs[key])
-" XXXXXXXXXXXXXXX
+" call forms#logforce("s:DistillColorScheme: default_value has key, use it")
+" call forms#logforce("s:DistillColorScheme: dvalue=" . default_attrs[key])
               let attrs[key] = "NONE"
             endif
           endfor
         else
-call forms#logforce("s:DistillColorScheme: default_values not have attrs")
+" call forms#logforce("s:DistillColorScheme: default_values not have attrs")
           " add all
           for key in keys
-call forms#logforce("s:DistillColorScheme: key=". key)
+" call forms#logforce("s:DistillColorScheme: key=". key)
             if has_key(cs_attrs, key)
               let l:value = cs_attrs[key]
-call forms#logforce("s:DistillColorScheme: l:value=". l:value)
+" call forms#logforce("s:DistillColorScheme: l:value=". l:value)
               if key == "links"
-call forms#logforce("s:DistillColorScheme: ERROR 4 XXXXXXXX links: l:value=". l:value)
+" call forms#logforce("s:DistillColorScheme: ERROR 4 XXXXXXXX links: l:value=". l:value)
                 let links[group] = l:value
               else
                 let attrs[key] = l:value
@@ -278,173 +342,45 @@ call forms#logforce("s:DistillColorScheme: ERROR 4 XXXXXXXX links: l:value=". l:
 
       endif
       if ! empty(attrs)
-call forms#logforce("s:DistillColorScheme: ADD attrs=". string(attrs))
+" call forms#logforce("s:DistillColorScheme: ADD attrs=". string(attrs))
         let groups[group] = attrs
       endif
     endif
     if has_key(cs_values, "links")
       let cs_link_value = cs_values["links"]
       if ! has_key(csdefaultgroups, group)
-call forms#logforce("s:DistillColorScheme: 1 LINK: " . group . " to " . cs_link_value)
+" call forms#logforce("s:DistillColorScheme: 1 LINK: " . group . " to " . cs_link_value)
         let links[group] = cs_link_value
       else
         let default_values = csdefaultgroups[group]
         if has_key(default_values, "links")
           let default_link_value = default_values["links"]
           if cs_link_value != default_link_value
-call forms#logforce("s:DistillColorScheme: 2 LINK: " . group . " to " . cs_link_value)
+" call forms#logforce("s:DistillColorScheme: 2 LINK: " . group . " to " . cs_link_value)
             let links[group] = cs_link_value
           endif
         else
-call forms#logforce("s:DistillColorScheme: 3 LINK: " . group . " to " . cs_link_value)
+" call forms#logforce("s:DistillColorScheme: 3 LINK: " . group . " to " . cs_link_value)
           let links[group] = cs_link_value
         endif
       endif
     endif
     if has_key(cs_values, "cleared")
-" XXXXXXXXXXXXXXX
       if group != "VisualNOS"
-call forms#logforce("s:DistillColorScheme: CLEAR : " . group)
-if 0
-        if ! has_key(csdefault.groups, group)
-call forms#logforce("s:DistillColorScheme: 1 CLEAR : " . group)
-          let clears[group] = 1
-       endif
-endif
+" call forms#logforce("s:DistillColorScheme: CLEAR : " . group)
         if ! has_key(cscurrentdefault.groups, group)
-call forms#logforce("s:DistillColorScheme: 2 CLEAR : " . group)
+" call forms#logforce("s:DistillColorScheme: 2 CLEAR : " . group)
           let clears[group] = 1
         else
           let cval = cscurrentdefault.groups[group]
           if ! has_key(cval, "cleared")
-call forms#logforce("s:DistillColorScheme: 3 CLEAR : " . group)
+" call forms#logforce("s:DistillColorScheme: 3 CLEAR : " . group)
             let clears[group] = 1
           endif
         endif
       endif
-if 0
-      if has_key(csdefaultgroups, group)
-        let default_values = csdefaultgroups[group]
-        if ! has_key(default_values, "cleared")
-          let clears[group] = 1
-        endif
-      endif
-      if ! has_key(csdefaultgroups, group)
-        let clears[group] = 1
-      else
-        let default_values = csdefaultgroups[group]
-        if ! has_key(default_values, "cleared")
-          let clears[group] = 1
-        endif
-      endif
-endif
     endif
   endfor
-  " for defaultgroup in defaultgroups
-  "   if not in csgroups
-  "     add group clear
-  "   endif
-  " endfor 
-"  for group in keys(csdefaultgroups)
-"    if ! has_key(csgroups, group)
-"      let clears[group] = 1
-"    endif
-"  endfor
-
-if 0
-  for group in keys(csgroups)
-" call forms#logforce("s:DistillColorScheme: group=".group)
-
-    let attrs = {}
-    if ! has_key(csdefaultgroups, group)
-      " not in default group
-      let cs_values = csgroups[group]
-      for key in keys(cs_values)
-        let l:value = cs_values[key]
-        if key == "links"
-" NOTE This is no longer needed ???
-"echo "group=".group." LINK to ".l:value
-          let links[group] = l:value
-        else
-          let attrs[key] = l:value
-        endif
-        unlet l:value
-      endfor
-
-    else
-      " also in default group
-      let cs_values = csgroups[group]
-      let default_values = csdefaultgroups[group]
-      for key in keys(cs_values)
-        if key == "cleared"
-" call forms#logforce("s:DistillColorScheme: key=cleared")
-          continue
-        endif
-        let l:value = cs_values[key]
-" call forms#logforce("s:DistillColorScheme: key=".key.", l:value=".string(l:value))
-        if ! has_key(default_values, key)
-          " key not in default group
-          if key == "links"
-" echo "group=".group." LINK to ".l:value
-            let links[group] = l:value
-          else
-            let attrs[key] = l:value
-          endif
-        else
-          let dvalue = default_values[key]
-" call forms#logforce("s:DistillColorScheme: dvalue=".string(dvalue))
-          if l:value != dvalue
-            if key == "links"
-              let links[group] = l:value
-            else
-              let attrs[key] = l:value
-            endif
-          endif
-          unlet dvalue
-        endif
-        unlet l:value
-      endfor
-    endif
-    if ! empty(attrs)
-      let groups[group] = attrs
-    endif
-  endfor
-  for group in keys(csdefaultgroups)
-    if has_key(csgroups, group)
-      let default_values = csdefaultgroups[group]
-      let cs_values = csgroups[group]
-      for key in keys(default_values)
-        if ! has_key(cs_values, key)
-          if key == "links"
-" NOTE This is no longer needed ???
-            " do nothing
-          else
-            if !has_key(links, group)
-              if has_key(groups, group)
-                let attrs = groups[group]
-                let attrs[key] = 'NONE'
-              endif
-            endif
-          endif
-        endif
-      endfor
-    endif
-  endfor
-endif
-
-if 0
-  let cslinks = cs.links
-  let csdefaultlinks = csdefaultdata.links
-  for key in sort(keys(cslinks))
-    if ! has_key(csdefaultlinks, key)
-      let links[key] = cslinks[key]
-    endif
-  endfor
-endif
-
-" if ! has_key(groups, "attrs")
-" call forms#logforce("s:DistillColorScheme: NO ATTRS a:cs=".string(a:cs))
-" endif
 
   let a:cs.distilled = {}
   let a:cs.distilled.groups = groups
@@ -455,6 +391,12 @@ endif
 
 endfunction
 
+"---------------------------------------------------------------------------
+" s:GetNormalRGB: {{{3
+"   Return String of the Normal highlight background.
+"  parameters:
+"     cs : Dictionary of color scheme highlights
+"---------------------------------------------------------------------------
 function! s:GetNormalRGB(cs)
 " call forms#logforce("GetNormalRGB cs=" . string(a:cs))
   let rgbtxt = ""
@@ -480,33 +422,32 @@ function! s:GetNormalRGB(cs)
   return rgbtxt
 endfunction
 
+"---------------------------------------------------------------------------
+" s:GroupsEquals: {{{3
+"   Return Number 1 if paramters are equal and 0 otherwise.
+"     Does recursion so important that there are no internal 
+"     references forming loops.
+"  parameters:
+"     dict1 : Dictionary of color scheme highlights
+"     dict2 : Dictionary of color scheme highlights
+"---------------------------------------------------------------------------
 function! s:GroupsEquals(dict1, dict2)
-" call forms#logforce("GroupsEquals: TOP")
   if type(a:dict1) !=  g:self#DICTIONARY_TYPE
-" call forms#logforce("GroupsEquals: NOT DICTIONARY")
     return 0
   endif
   for group in keys(a:dict1)
     if ! has_key(a:dict2, group)
-" call forms#logforce("GroupsEquals: NO KEY dict2=". group)
       return 0
     else
       let l:val1 = a:dict1[group]
       let l:val2 = a:dict2[group]
       if type(l:val1) != type(l:val2)
-" call forms#logforce("GroupsEquals: DIFF TYPES=". string(l:val1))
         return 0
       elseif type(l:val1) == g:self#DICTIONARY_TYPE
         if ! s:GroupsEquals(l:val1, l:val2)
-" call forms#logforce("GroupsEquals: NOT EQUALS=". group)
-" call forms#logforce("GroupsEquals: val1=". string(l:val1))
-" call forms#logforce("GroupsEquals: val2=". string(l:val2))
           return 0
         endif
       elseif l:val1 != l:val2
-" call forms#logforce("GroupsEquals: NOT EQUALS=". group)
-" call forms#logforce("GroupsEquals: val1=". string(l:val1))
-" call forms#logforce("GroupsEquals: val2=". string(l:val2))
         return 0
       endif
       unlet l:val1
@@ -515,25 +456,17 @@ function! s:GroupsEquals(dict1, dict2)
   endfor
   for group in keys(a:dict2)
     if ! has_key(a:dict1, group)
-" call forms#logforce("GroupsEquals: NO KEY dict1=". group)
       return 0
     else
       let l:val1 = a:dict1[group]
       let l:val2 = a:dict2[group]
       if type(l:val1) != type(l:val2)
-" call forms#logforce("GroupsEquals: DIFF TYPES=". string(l:val1))
         return 0
       elseif type(l:val1) == g:self#DICTIONARY_TYPE
         if ! s:GroupsEquals(l:val1, l:val2)
-" call forms#logforce("GroupsEquals: NOT EQUALS=". group)
-" call forms#logforce("GroupsEquals: val1=". string(l:val1))
-" call forms#logforce("GroupsEquals: val2=". string(l:val2))
           return 0
         endif
       elseif l:val1 != l:val2
-" call forms#logforce("GroupsEquals: NOT EQUALS=". group)
-" call forms#logforce("GroupsEquals: val1=". string(l:val1))
-" call forms#logforce("GroupsEquals: val2=". string(l:val2))
         return 0
       endif
       unlet l:val1
@@ -544,8 +477,13 @@ function! s:GroupsEquals(dict1, dict2)
   return 1
 endfunction
 
-" name: String 
-" attrs: Dictionary
+"---------------------------------------------------------------------------
+" FormatAttrs: {{{3
+"   Return String of formatted highlight attributes.
+"  parameters:
+"     name : String name of highlight group
+"     attrs : Dictionary of color scheme highlight attributes
+"---------------------------------------------------------------------------
 function! FormatAttrs(name, attrs)
   let s = a:name
   let keys = ["term", "cterm", "ctermfg", "ctermbg", "gui", "guifg", "guibg"]
@@ -586,7 +524,7 @@ endfunction
 
 "---------------------------------------------------------------------------
 " colorschemer#distill#MakeColorSchemeData: {{{3
-"   Returns List of Dictionariers containing color scheme
+"   Returns List of Dictionaries containing color scheme
 "     in the same format as colorschemer#util#CaptureHighlights()
 "     The List can be empty.
 "   Get the highlights when background is set to both dark and light. 
@@ -612,10 +550,8 @@ function! colorschemer#distill#MakeColorSchemeData(csname, infilepath)
   let csname = a:csname
 "call forms#logforce("MakeColorSchemeData: csname=".csname)
 
-let darkdefault = s:GetDefaultDarkColorSchemeData()
-"call forms#logforce("MakeColorSchemeData: darkdefault=".string(darkdefault.groups))
-let lightdefault = s:GetDefaultLightColorSchemeData()
-"call forms#logforce("MakeColorSchemeData: lightdefault=".string(lightdefault.groups))
+  let darkdefault = s:GetDefaultDarkColorSchemeData()
+  let lightdefault = s:GetDefaultLightColorSchemeData()
 
   " Save current runtimepath and then create a new version
   " with the infilepath prepended.
@@ -643,8 +579,10 @@ let lightdefault = s:GetDefaultLightColorSchemeData()
   let csdark = {}
   let csdark.groups = colorschemer#util#CaptureHighlights()
   let csdark_background = &background
-call forms#logforce("MakeColorSchemeData: csdark_background=".csdark_background)
+
+" call forms#logforce("MakeColorSchemeData: csdark_background=".csdark_background)
 " call forms#logforce("MakeColorSchemeData: ".csname." csdark=".string(csdark.groups))
+
   let g:forms_reload_highlights_on_colorscheme_event = 1
 
   " Do light
@@ -660,8 +598,10 @@ call forms#logforce("MakeColorSchemeData: csdark_background=".csdark_background)
   let cslight = {}
   let cslight.groups = colorschemer#util#CaptureHighlights()
   let cslight_background = &background
-call forms#logforce("MakeColorSchemeData: cslight_background=".cslight_background)
+
+"call forms#logforce("MakeColorSchemeData: cslight_background=".cslight_background)
 " call forms#logforce("MakeColorSchemeData: ".csname." cslight=".string(cslight.groups))
+"
   let g:forms_reload_highlights_on_colorscheme_event = 1
 
   for group in keys(csdark.groups)
@@ -691,21 +631,6 @@ call forms#logforce("MakeColorSchemeData: cslight_background=".cslight_backgroun
   let csdark_empty = s:GroupsEquals(csdark.groups, darkdefault.groups)
   let cslight_empty = s:GroupsEquals(cslight.groups, lightdefault.groups)
 
-if 0
-  if csdark_empty
-call forms#logforce("MakeColorSchemeData: csdark == default ")
-  else
-call forms#logforce("MakeColorSchemeData: csdark != default ")
-  endif
-
-  if cslight_empty
-call forms#logforce("MakeColorSchemeData: cslight == default ")
-  else
-call forms#logforce("MakeColorSchemeData: cslight != default ")
-  endif
-endif
-
-
 
   let rval = []
   if csdark_empty && cslight_empty
@@ -713,7 +638,7 @@ endif
     " both are empty, no groups, so don't return empty List
 
   elseif csdark_empty 
-call forms#logforce("MakeColorSchemeData: csdark_empty")
+" call forms#logforce("MakeColorSchemeData: csdark_empty")
     " Ok, the color scheme claims to be 'light'. 
     " If it has NO Normal group (IsDark == 'none'), then we 'trust'
     " that the designer wanted it to be light, i.e., the value
@@ -733,7 +658,7 @@ call forms#logforce("MakeColorSchemeData: csdark_empty")
     let rval = [ cslight ]
     
   elseif cslight_empty
-call forms#logforce("MakeColorSchemeData: cslight_empty")
+" call forms#logforce("MakeColorSchemeData: cslight_empty")
     " similar to csdark_empty above
     let darknormalrgb = s:GetNormalRGB(csdark)
     let normal_background = colorschemer#util#IsDark(darknormalrgb)
@@ -748,7 +673,7 @@ call forms#logforce("MakeColorSchemeData: cslight_empty")
     let rval = [ csdark ]
     
   elseif s:GroupsEquals(csdark.groups, cslight.groups)
-call forms#logforce("MakeColorSchemeData: equal")
+" call forms#logforce("MakeColorSchemeData: equal")
     " Since they are equal, the question is whether its a dark or light
     " color scheme. 
     " If it has NO Normal group (IsDark == 'none'), then 
@@ -760,9 +685,9 @@ call forms#logforce("MakeColorSchemeData: equal")
     " Both equal so just use csdark
     let cs = csdark
     let csnormalrgb = s:GetNormalRGB(cs)
-call forms#logforce("MakeColorSchemeData: csnormalrgb=". csnormalrgb)
+" call forms#logforce("MakeColorSchemeData: csnormalrgb=". csnormalrgb)
     let normal_background = colorschemer#util#IsDark(csnormalrgb)
-call forms#logforce("MakeColorSchemeData: normal_background=". normal_background)
+" call forms#logforce("MakeColorSchemeData: normal_background=". normal_background)
     if normal_background == 'none'
       if cslight_background == 'light'
         let cs.background = 'light'
@@ -783,7 +708,7 @@ call forms#logforce("MakeColorSchemeData: normal_background=". normal_background
     let rval = [ cs ]
 
   else
-call forms#logforce("MakeColorSchemeData: not equal")
+" call forms#logforce("MakeColorSchemeData: not equal")
     " dark and light groups not equal
     " If neither have Normal group (IsDark == 'none'), then 
     "   if light background is light and dark background is dark
@@ -939,6 +864,16 @@ call forms#logforce("MakeColorSchemeData: not equal")
 
 endfunction
 
+
+"---------------------------------------------------------------------------
+" s:GenerateGuiDistilledAttrs: {{{3
+"   Returns String of highlight command for  guifg. guibg.
+"     When there is not a guifg/guibg value the if there is a
+"       ctermfg/ctermbg value then they are used.
+"  parameters: 
+"   group   : String name of color scheme group
+"   attrs   : Dictionary of highlight attributes
+"---------------------------------------------------------------------------
 function! s:GenerateGuiDistilledAttrs(group, attrs)
   let hiStr = ""
   let keys = ["guifg", "guibg"]
@@ -1001,6 +936,16 @@ function! s:GenerateGuiDistilledAttrs(group, attrs)
   return (hiStr == "" ) ? "" : "hi " . a:group . hiStr
 endfunction
 
+"---------------------------------------------------------------------------
+" s:Generate256DistilledAttrs: {{{3
+"   Returns String of highlight command for ctermfg. ctermbg.
+"     When there is not a ctermfg/ctermbg value the if there is a
+"       guifg/guibg value then they are used.
+"     Values are Number for a 256 color Xterm
+"  parameters: 
+"   group   : String name of color scheme group
+"   attrs   : Dictionary of highlight attributes
+"---------------------------------------------------------------------------
 function! s:Generate256DistilledAttrs(group, attrs)
   let hiStr = ""
   let keys = ["ctermfg", "ctermbg"]
@@ -1088,6 +1033,16 @@ function! s:Generate256DistilledAttrs(group, attrs)
   return (hiStr == "" ) ? "" : "hi " . a:group . hiStr
 endfunction
 
+"---------------------------------------------------------------------------
+" s:Generate88DistilledAttrs: {{{3
+"   Returns String of highlight command for ctermfg. ctermbg.
+"     When there is not a ctermfg/ctermbg value the if there is a
+"       guifg/guibg value then they are used.
+"     Values are Number for a 88 color Rxvt unicode
+"  parameters: 
+"   group   : String name of color scheme group
+"   attrs   : Dictionary of highlight attributes
+"---------------------------------------------------------------------------
 function! Generate88DistilledAttrs(group, attrs)
   let hiStr = ""
   let keys = ["ctermfg", "ctermbg"]
@@ -1187,6 +1142,16 @@ function! Generate88DistilledAttrs(group, attrs)
   return (hiStr == "" ) ? "" : "hi " . a:group . hiStr
 endfunction
 
+"---------------------------------------------------------------------------
+" s:Generate16DistilledAttrs: {{{3
+"   Returns String of highlight command for ctermfg. ctermbg.
+"     When there is not a ctermfg/ctermbg value the if there is a
+"       guifg/guibg value then they are used.
+"     Values are Number for a 16 color Xterm
+"  parameters: 
+"   group   : String name of color scheme group
+"   attrs   : Dictionary of highlight attributes
+"---------------------------------------------------------------------------
 function! s:Generate16DistilledAttrs(group, attrs)
   let hiStr = ""
   let keys = ["ctermfg", "ctermbg"]
@@ -1286,6 +1251,16 @@ function! s:Generate16DistilledAttrs(group, attrs)
   return (hiStr == "" ) ? "" : "hi " . a:group . hiStr
 endfunction
 
+"---------------------------------------------------------------------------
+" s:Generate8DistilledAttrs: {{{3
+"   Returns String of highlight command for ctermfg. ctermbg.
+"     When there is not a ctermfg/ctermbg value the if there is a
+"       guifg/guibg value then they are used.
+"     Values are Number for a 8 color Xterm
+"  parameters: 
+"   group   : String name of color scheme group
+"   attrs   : Dictionary of highlight attributes
+"---------------------------------------------------------------------------
 function! s:Generate8DistilledAttrs(group, attrs)
   let hiStr = ""
   let keys = ["ctermfg", "ctermbg"]
@@ -1385,6 +1360,12 @@ function! s:Generate8DistilledAttrs(group, attrs)
   return (hiStr == "" ) ? "" : "hi " . a:group . hiStr
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#distill#GenerateDistilledColorScheme: {{{3
+"   Returns List of lines for distilled file content.
+"  parameters: 
+"   cs   : Dictionary of distilled color scheme 
+"---------------------------------------------------------------------------
 function! colorschemer#distill#GenerateDistilledColorScheme(cs)
   let lines = []
 
@@ -1542,6 +1523,13 @@ call forms#logforce("GenerateDistilledColorScheme: csname=".csname)
   return lines
 endfunction
 
+"---------------------------------------------------------------------------
+" s:GetOutDirectory: {{{3
+"   Returns String output directory including background sub-directory
+"  parameters: 
+"   background  : String of background 'light' or 'dark'
+"   outfiledir  : String base output directory path
+"---------------------------------------------------------------------------
 function! s:GetOutDirectory(background, outfiledir)
   if a:background == "dark"
     return a:outfiledir . '/' . g:dark_outdirectory 
@@ -1552,11 +1540,28 @@ function! s:GetOutDirectory(background, outfiledir)
   endif
 endfunction
 
+"---------------------------------------------------------------------------
+" s:WriteDistilledColorScheme: {{{3
+"   Write out the lines to the file
+"  parameters: 
+"   filepath  : String file path
+"   lines     : List of line to write to file
+"---------------------------------------------------------------------------
 function! s:WriteDistilledColorScheme(filepath, lines)
   call writefile(a:lines, a:filepath)
 endfunction
 
 
+"---------------------------------------------------------------------------
+" colorschemer#distill#MakeDistilledColorSchemeFile: {{{3
+"   For color scheme with name of paramter csnmae locate its color 
+"     scheme file in infiledir and then write distilled version to
+"     outfiledir.
+"  parameters: 
+"   csname      : String name of color scheme
+"   infiledir   : String input directory
+"   outfiledir  : String output directory
+"---------------------------------------------------------------------------
 function! colorschemer#distill#MakeDistilledColorSchemeFile(csname, infiledir, outfiledir)
 call forms#logforce("MakeDistilledColorSchemeFile: csname=".a:csname)
   let csfile = a:csname . '.vim'
@@ -1596,6 +1601,14 @@ call forms#logforce("MakeDistilledColorSchemeFile: cleanup: ". group)
 
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#distill#MakeDistilledColorSchemeFiles: {{{3
+"   For all color scheme files in infiledir, generate a distilled version
+"     and then write the distilled version to outfiledir.
+"  parameters: 
+"   infiledir   : String input directory
+"   outfiledir  : String output directory
+"---------------------------------------------------------------------------
 function! colorschemer#distill#MakeDistilledColorSchemeFiles(infiledir, outfiledir)
 call forms#logforce("MakeDistilledColorSchemeFiles: TOP")
   let path = "*.vim"
@@ -1604,7 +1617,7 @@ call forms#logforce("MakeDistilledColorSchemeFiles: TOP")
     let [ filepath, path, filename, base, suffix ] = colorschemer#util#ParseFilePath(f)
     let csname = base
 
-    " skip some color schems that generate errors
+    " skip some color scheme that generate errors
     if csname == "solarized_1"
       " earlier version of solarized
       continue
@@ -1621,6 +1634,11 @@ call forms#logforce("MakeDistilledColorSchemeFiles: TOP")
 endfunction
 
 
+"---------------------------------------------------------------------------
+" colorschemer#distill#Some: {{{3
+"   Test function to generate distilled version in output 'test' directory.
+"  parameters: None
+"---------------------------------------------------------------------------
 function! colorschemer#distill#Some()
   let rtl = colorschemer#util#GetRunTimeLocation()
   let infiledir=rtl . '/' . "data/colorschemer/"
@@ -1656,6 +1674,13 @@ function! colorschemer#distill#Test()
   call forms#logforce("rtlocation=".rtl) 
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#distill#All: {{{3
+"   For all color scheme files located in current runtime location
+"     "data/colorschemer",  generate distilled version and 
+"     write to "data/colorschemer/distilled" directory
+"  parameters: None
+"---------------------------------------------------------------------------
 function! colorschemer#distill#ALL()
   let rtl = colorschemer#util#GetRunTimeLocation()
   let infiledir=rtl . '/' . "data/colorschemer"

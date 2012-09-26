@@ -34,22 +34,6 @@ let g:max_columns = "78"
 " let g:background_dominate = "none"
 
 
-if 0
-let s:ColorSchemerVersion = "1.0"
-
-let g:dark_outdirectory = "dark/colors"
-let g:light_outdirectory = "light/colors"
-let g:none_outdirectory = "none/colors"
-
-if exists("$USER")
-  let s:UserName = $USER
-elseif exists("$USERNAME")
-  let s:UserName = $USERNAME
-else
-  let s:UserName = "UNKNOWN"
-endif
-endif
-
 " used to capture the Color Scheme name in GetColorSchemeName
 let s:colorsname = ""
 
@@ -570,11 +554,6 @@ function! s:WriteFile(fileinfo)
     let cstart = hi[4]
     let cend = hi[5]
     let l = "['".name."','".nametrans."',".lstart.",".lend.",".cstart.",".cend."]"
-if 0
-    let pattern = hi[6]
-    let l = "['".name."','".nametrans."',".lstart.",".lend.",".cstart.",".cend.",'".pattern."']"
-endif
-
     let cnt += 1
 
     if cnt < len
@@ -850,16 +829,6 @@ let g:selected_colorscheme = cs
 
   let pdl_action = forms#newAction({ 'execute': function("GenerateFormPDLAction")})
 
-if 0
-  " let cpath="/home/emberson/.vim/data/colorschemer/distilled.cterm/dark"
-  " let cpath="/home/emberson/.vim/data/colorschemer/distilled.cterm/light"
-  let rtl = colorschemer#util#GetRunTimeLocation()
-  let cpath=rtl . '/' . "data/colorschemer/distilled.cterm/dark"
-  let l:rtp = &rtp
-  let &rtp=cpath.','.&rtp
-  let l:n = globpath(cpath, "colors/*.vim")
-endif
-
   let l:rtp = &rtp
   let &rtp=a:cpath.','.&rtp
   let l:n = globpath(a:cpath, "colors/*.vim")
@@ -1001,42 +970,77 @@ endif
   call form.run()
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#viewer#ViewerDistilledCtermDark: {{{3
+"  Create a Form displaying the distilled cterm dark color schemes
+"  parameters: None
+"---------------------------------------------------------------------------
 function! colorschemer#viewer#ViewerDistilledCtermDark()
   let rtl = colorschemer#util#GetRunTimeLocation()
   let cpath=rtl . '/' . "data/colorschemer/distilled.cterm/dark"
   call colorschemer#viewer#Viewer(cpath)
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#viewer#ViewerDistilledCtermLight: {{{3
+"  Create a Form displaying the distilled cterm light color schemes
+"  parameters: None
+"---------------------------------------------------------------------------
 function! colorschemer#viewer#ViewerDistilledCtermLight()
   let rtl = colorschemer#util#GetRunTimeLocation()
   let cpath=rtl . '/' . "data/colorschemer/distilled.cterm/light"
   call colorschemer#viewer#Viewer(cpath)
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#viewer#ViewerDistilledGuiDark: {{{3
+"  Create a Form displaying the distilled gui dark color schemes
+"  parameters: None
+"---------------------------------------------------------------------------
 function! colorschemer#viewer#ViewerDistilledGuiDark()
   let rtl = colorschemer#util#GetRunTimeLocation()
   let cpath=rtl . '/' . "data/colorschemer/distilled.gui/dark"
   call colorschemer#viewer#Viewer(cpath)
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#viewer#ViewerDistilledGuiLight: {{{3
+"  Create a Form displaying the distilled gui light color schemes
+"  parameters: None
+"---------------------------------------------------------------------------
 function! colorschemer#viewer#ViewerDistilledGuiLight()
   let rtl = colorschemer#util#GetRunTimeLocation()
   let cpath=rtl . '/' . "data/colorschemer/distilled.gui/light"
   call colorschemer#viewer#Viewer(cpath)
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#viewer#ViewerDistilledDark: {{{3
+"  Create a Form displaying the distilled dark color schemes
+"  parameters: None
+"---------------------------------------------------------------------------
 function! colorschemer#viewer#ViewerDistilledDark()
   let rtl = colorschemer#util#GetRunTimeLocation()
   let cpath=rtl . '/' . "data/colorschemer/distilled/dark"
   call colorschemer#viewer#Viewer(cpath)
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#viewer#ViewerDistilledLight: {{{3
+"  Create a Form displaying the distilled light color schemes
+"  parameters: None
+"---------------------------------------------------------------------------
 function! colorschemer#viewer#ViewerDistilledLight()
   let rtl = colorschemer#util#GetRunTimeLocation()
   let cpath=rtl . '/' . "data/colorschemer/distilled/light"
   call colorschemer#viewer#Viewer(cpath)
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#viewer#ViewerHomeColors: {{{3
+"  Create a Form displaying the Vim Home colors color schemes
+"  parameters: None
+"---------------------------------------------------------------------------
 function! colorschemer#viewer#ViewerHomeColors()
   let rtps = split(&rtp, ",")
   let cpath = rtps[0]

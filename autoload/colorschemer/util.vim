@@ -14,10 +14,15 @@
 "
 " ============================================================================
 " Intro: {{{1
-" CCCCCCCCCCC
-"   DDDDDDD
+" Utility functions for both distill.vim and viewer.vim.
 " ============================================================================
 
+"---------------------------------------------------------------------------
+" s:GetRunTimeLocation: {{{3
+"   Returns the Vim runtime location of this file
+"  parameters: 
+"   dir   : String directory
+"---------------------------------------------------------------------------
 function! s:GetRunTimeLocation(dir)
   let dir = a:dir
   while dir != "/"
@@ -35,6 +40,11 @@ let s:fullpath=expand('<sfile>:p')
 let s:fulldir=fnamemodify(s:fullpath, ':h')
 let s:runtimelocation = s:GetRunTimeLocation(s:fulldir)
 
+"---------------------------------------------------------------------------
+" colorschemer#util#GetRunTimeLocation: {{{3
+"   Returns the Vim runtime location of this script
+"  parameters: None
+"---------------------------------------------------------------------------
 function! colorschemer#util#GetRunTimeLocation()
   return s:runtimelocation
 endfunction
@@ -276,26 +286,53 @@ function! colorschemer#util#CaptureHighlights()
   return l:groups
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#util#GetVimFileFromDirectory: {{{3
+"   Return Vim file
+"  parameters: 
+"   dirname   : String directory to search for Vim files
+"   basefilename : String base name of Vim file
+"---------------------------------------------------------------------------
 function! colorschemer#util#GetVimFileFromDirectory(dirname, basefilename)
   let l:fullpath = a:dirname . "/" . a:basefilename . ".vim"
   return filereadable(l:fullpath) ? l:fullpath : ""
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#util#GetVimFilesFromDirectory: {{{3
+"   Return List of Vim files
+"  parameters: 
+"   dirname   : String directory to search for Vim files
+"---------------------------------------------------------------------------
 function! colorschemer#util#GetVimFilesFromDirectory(dirname)
   if isdirectory(a:dirname)
     let l:expr = "*.vim"
     let l:files = split(globpath(a:dirname, l:expr), "\n")
+    return l:files
   else
-    return ""
+    return []
   endif
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#util#GetVimFileFromRuntimePath: {{{3
+"   Return Vim file
+"  parameters: 
+"   subdirname   : String runtime path sub-directory 
+"   basefilename : String base name of Vim file
+"---------------------------------------------------------------------------
 function! colorschemer#util#GetVimFileFromRuntimePath(subdirname, basefilename)
   let l:expr = a:subdirname . "/" . a:basefilename . ".vim"
   let l:files = split(globpath(&runtimepath, l:expr), "\n")
   return empty(l:files) ? "" : l:files[0]
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#util#GetVimFilesFromRuntimePath: {{{3
+"   Return List of Vim files
+"  parameters: 
+"   subdirname : String runtime path sub-directory 
+"---------------------------------------------------------------------------
 function! colorschemer#util#GetVimFilesFromRuntimePath(subdirname)
   let l:expr = a:subdirname . "/*.vim"
   let l:files = split(globpath(&runtimepath, l:expr), "\n")
@@ -338,6 +375,13 @@ function! colorschemer#util#ResetDarkColorSchemeData()
   let g:forms_reload_highlights_on_colorscheme_event = 1
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#util#GuiToCTerm: {{{3
+"   Return Number cterm value associated with rbg value.
+"     or 'none' if not valide parameter value. 
+"  parameters: 
+"   rgbtxt : String gui color value (Number or Name)
+"---------------------------------------------------------------------------
 function! colorschemer#util#GuiToCTerm(rgbtxt)
   let rgbtxt = tolower(a:rgbtxt)
   if rgbtxt != ""
@@ -371,6 +415,15 @@ function! colorschemer#util#GuiToCTerm(rgbtxt)
   return "none"
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#util#IsDark: {{{3
+"   Return String 'light', 'dark' or 'none'
+"     if parameter has HSV value >= 0.5 return 'light'
+"     elseif parameter has HSV value < 0.5 return 'dark'
+"     else if paremeter is not an rgb value return 'none'
+"  parameters: 
+"   rgbtxt : String rgb value
+"---------------------------------------------------------------------------
 function! colorschemer#util#IsDark(rgbtxt)
   let rgbtxt = tolower(a:rgbtxt)
   if rgbtxt != ""
