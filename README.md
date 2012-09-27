@@ -130,6 +130,13 @@ For color schemes found in user's $HOME/.vim/colors or $HOME/vimfiles/colors
 
     call colorschemer#viewer#ViewerHomeColors()
 
+To browse local directories for 'colors' directory to view
+
+    call colorschemer#viewer#ViewerBrowse()
+
+To access any of the above color scheme viewing options use:
+
+    call colorschemer#viewer#ViewerForm()
 
 ## Tutorial
 

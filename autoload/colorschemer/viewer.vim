@@ -17,7 +17,6 @@
 "   DDDDDDD
 " ============================================================================
 
-let g:max_lines = 30
 let g:version = "1.0"
 let g:test_file_path = "data/colorschemer/test/"
 let g:default_ctermbg = "247"
@@ -27,11 +26,6 @@ let g:default_guifg = "#393939"
 
 let g:max_lines = "25"
 let g:max_columns = "78"
-
-" let g:background_light = 1
-" let g:background_dark = 1
-" light,dark,none
-" let g:background_dominate = "none"
 
 
 " used to capture the Color Scheme name in GetColorSchemeName
@@ -64,8 +58,6 @@ endfunction
 " Get the current Color Scheme name and the Normal fg/bg values.
 let s:current_background = &background
 let s:current_colorscheme = s:GetColorSchemeName()
-" let s:current_normal_background = s:GetNormalBackground()
-" let s:current_normal_foreground = s:GetNormalForeground()
 let g:selected_colorscheme = s:current_colorscheme
 
 "---------------------------------------------------------------------------
@@ -1047,3 +1039,119 @@ function! colorschemer#viewer#ViewerHomeColors()
   call colorschemer#viewer#Viewer(cpath)
 endfunction
 
+"---------------------------------------------------------------------------
+" colorschemer#viewer#ViewerBrowse: {{{3
+"  Browse for colors directory.
+"  parameters: None
+"---------------------------------------------------------------------------
+function! colorschemer#viewer#ViewerBrowse()
+  let title = "Select 'colors' Directory"
+  let dict = { 'title': title }
+  let rval = forms#dialog#directorybrowser#Make(dict)
+
+  " strip off trailing '/'
+  let rlen = len(rval)
+  if rval[rlen - 1] == '/'
+    let rval = strpart(rval, 0, rlen - 1)
+  endif
+
+  let lastdir = fnamemodify(rval, ':t')
+  if lastdir != 'colors'
+    echo "Error: last directory must be 'colors'"
+  else
+    let cpath = fnamemodify(rval, ':h')
+    call colorschemer#viewer#Viewer(cpath)
+  endif
+endfunction
+
+function! colorschemer#viewer#ViewerForm()
+  function! RunAction(...) dict
+    call self.FN()
+    call forms#ClearInputList()
+  endfunction
+
+  function! s:MakeButton(title, FN)
+    let label = forms#newLabel({ 'text': a:title})
+    let action = forms#newAction({ 'execute': function("RunAction")})
+    let action.FN = a:FN
+    let button = forms#newButton({
+                            \ 'body': label,
+                            \ 'action': action})
+
+    return button
+  endfunction
+
+  let children = []
+  let hspace = forms#newHSpace({'size': 1})
+
+  let FN = function("colorschemer#viewer#ViewerDistilledCtermDark")
+  let g = s:MakeButton('Distilled Cterm Dark', FN)
+  call add(children, g)
+  call add(children, hspace)
+
+  let FN = function("colorschemer#viewer#ViewerDistilledCtermLight")
+  let g = s:MakeButton('Distilled Cterm Light', FN)
+  call add(children, g)
+  call add(children, hspace)
+
+  let FN = function("colorschemer#viewer#ViewerDistilledGuiDark")
+  let g = s:MakeButton('Distilled Gui Dark', FN)
+  call add(children, g)
+  call add(children, hspace)
+  
+  let FN = function("colorschemer#viewer#ViewerDistilledGuiLight")
+  let g = s:MakeButton('Distilled Gui Light', FN)
+  call add(children, g)
+  call add(children, hspace)
+
+  let FN = function("colorschemer#viewer#ViewerDistilledDark")
+  let g = s:MakeButton('Distilled Dark', FN)
+  call add(children, g)
+  call add(children, hspace)
+
+  let FN = function("colorschemer#viewer#ViewerDistilledLight")
+  let g = s:MakeButton('Distilled Light', FN)
+  call add(children, g)
+  call add(children, hspace)
+
+  let FN = function("colorschemer#viewer#ViewerHomeColors")
+  let g = s:MakeButton('Vim Home Colors', FN)
+  call add(children, g)
+  call add(children, hspace)
+
+  let FN = function("colorschemer#viewer#ViewerBrowse")
+  let g = s:MakeButton('Browse for Colors', FN)
+  call add(children, g)
+
+  let title = forms#newLabel({ 'text': 'Select Color Scheme to View'})
+
+  let vpoly = forms#newVPoly({ 'children': children })
+
+  let label = forms#newLabel({ 'text': 'Close'})
+  let closebutton = forms#newButton({
+                            \ 'body': label,
+                            \ 'action': g:forms#cancelAction})
+
+  let grid = forms#newGrid({
+                      \ 'nos_rows': 3,
+                      \ 'nos_columns': 1,
+                      \ 'mode': 'light',
+                      \ 'halignment': 'L',
+                      \ 'valignment': 'T',
+                      \ 'halignments': [[0,'C'],[2,'R']],
+                      \ 'data': [
+                      \ [0, 0, title],
+                      \ [1, 0, vpoly],
+                      \ [2, 0, closebutton]
+                      \ ]
+                      \ })
+
+if 0
+  let b = forms#newBorder({ 'body': vpoly })
+  let b = forms#newBox({ 'body': b })
+endif
+  let bg = forms#newBackground({ 'body': grid} )
+  let form = forms#newForm({'body': bg })
+  call form.run()
+
+endfunction
