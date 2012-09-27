@@ -23,29 +23,29 @@ The processing does the following:
 *  It eliminates those group attributes that are redundant,
 *  Generates a standard comment header and initial VimL code:
 
-    set background= 'light' or 'dark'
-    hi clear
+        set background= 'light' or 'dark'
+        hi clear
 
-    if exists("syntax_on")
-      syntax reset')
-    endif
+        if exists("syntax_on")
+            syntax reset
+        endif
 
-    let g:colors_name = expand("<sfile>:t:r")
+        let g:colors_name = expand("<sfile>:t:r")
 
 *  Output highlight group definitions targeted for specific GVim and Vim
 configurations:
 
-    if has("gui_running")
-      " highlights for GVim
-    elseif &t_Co == 256
-      " highlights for 256 color Xterm Vim
-    elseif &t_Co == 88
-      " highlights for 88 urvxt color Vim
-    elseif &t_Co == 16
-      " highlights for 16 color Xterm Vim
-    else " &t_Co == 8
-      " highlights for 8 color Xterm Vim
-    endif
+        if has("gui_running")
+            " highlights for GVim
+        elseif &t_Co == 256
+            " highlights for 256 color Xterm Vim
+        elseif &t_Co == 88
+            " highlights for 88 urvxt color Vim
+        elseif &t_Co == 16
+            " highlights for 16 color Xterm Vim
+        else " &t_Co == 8
+            " highlights for 8 color Xterm Vim
+        endif
 
 *  It eliminates redundant link definitions, 
 *  The background color set depends primarily on the Normal background value and not what the color scheme file says (because, they sometimes lie).
@@ -64,10 +64,10 @@ were pretty simple). Then using the distill.vim script, running it
 from both Vim in and Xterm (the cterm configuration) and GVim (the gui
 configuration) it generated the following number of color scheme files:
 
-*   486 cterm dark 
-*   290 cterm light 
-*   487 gui dark 
-*   275 gui light 
+*   486 cterm dark color scheme files
+*   290 cterm light color scheme files
+*   487 gui dark color scheme files
+*   275 gui light color scheme files
 
 There is no claim that they are all unique or (at least currently) that
 all dark ones actually have dark backgrounds and all light ones have
@@ -101,7 +101,7 @@ will not run - there are no color scheme files in the directory
     data/colorschemer/distill
 
 Examples images of what can be seen using the Viewer are in the 
-images directory.
+[images directory](https://github.com/megaannum/colorschemer/tree/master/images).
 
 # Installation
 
