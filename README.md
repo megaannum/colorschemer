@@ -9,11 +9,99 @@ color schemes I was able to download from the www.vim.org
 site using the 
 [downloadVimColorSchemes.sh script](https://github.com/megaannum/vim_color_schemes_downloader).
 
-It is my intension to generate a VimL script that will allow the
-user to generate, tailor and manage their color scheme files.
+There are two primary capabilities associated with this Vim utility:
+color scheme file distillation (see distill.vim script) and
+color scheme file viewing (see: viewer.vim script).
 
-For now, I am just using the repository to save the downloaded 
-color scheme files.
+## Distill
+
+A distilled color scheme file is a color scheme file that has been 
+produced by processing an existing color scheme file. 
+The processing does the following:
+
+*  It eliminates those highlight group declarations that are redundant,
+*  It eliminates those group attributes that are redundant,
+*  Generates a standard comment header and initial VimL code:
+
+    set background= 'light' or 'dark'
+    hi clear
+
+    if exists("syntax_on")
+      syntax reset')
+    endif
+
+    let g:colors_name = expand("<sfile>:t:r")
+
+*  Output highlight group definitions targeted for specific GVim and Vim
+configurations:
+
+    if has("gui_running")
+      " highlights for GVim
+    elseif &t_Co == 256
+      " highlights for 256 color Xterm Vim
+    elseif &t_Co == 88
+      " highlights for 88 urvxt color Vim
+    elseif &t_Co == 16
+      " highlights for 16 color Xterm Vim
+    else " &t_Co == 8
+      " highlights for 8 color Xterm Vim
+    endif
+
+*  It eliminates redundant link definitions, 
+*  The background color set depends primarily on the Normal background value and not what the color scheme file says (because, they sometimes lie).
+*  When appropriate generates both a 'dark' and 'light' version of the same base color scheme file.
+
+The color scheme viewer can be used to review color scheme files located in
+a 'colors' directory. This 'review' consists of seeing a test file
+displayed using the selected color scheme. One can easily toggle through
+both which test file to use (currently there are test files for c, pl, 
+java, scala, tex and html) and which color scheme.
+
+Using the vim_color_schemes_downloader bash script mentioned above, I was
+able to identify some 687 color scheme files (though there maybe a couple
+of duplications - the bash script unique identification heuristics 
+were pretty simple). Then using the distill.vim script, running it
+from both Vim in and Xterm (the cterm configuration) and GVim (the gui
+configuration) it generated the following number of color scheme files:
+
+*   486 cterm dark 
+*   290 cterm light 
+*   487 gui dark 
+*   275 gui light 
+
+There is no claim that they are all unique or (at least currently) that
+all dark ones actually have dark backgrounds and all light ones have
+light backgrounds (this is still a work in progress). But, the 
+distill.vim script did take the original color scheme files most of which
+were written for GVim and produce comparable color scheme files for
+Vim.
+
+A small number of original color scheme files has VimL code that
+specifically forbade a user from using them if they were not running
+GVim (or, as the case may be, Vim). And a small number were just
+broken (I attempted to fix them and checkin here corrected versions).
+
+At any rate, I believe that this is the largest collection of Vim
+color scheme files available.
+
+## Viewer
+
+The viewer.vim script allows one to quickly and easily look at files
+of different filetypes applying different color schemes.
+
+There is a mapping defined in the plugin/colorschemer.vim file
+
+    <Leader>cv
+
+which will bring up a dialog from which all of the various viewers
+can be launched. Note that until one runs the distill.vim script
+on one's own machine, the ViewerDistilledDark and ViewerDistilledLight
+will not run - there are no color scheme files in the directory
+
+    data/colorschemer/distill
+
+Examples images of what can be seen using the Viewer are in the 
+images directory.
 
 # Installation
 
@@ -23,7 +111,7 @@ Not installed at www.vim.org yet.
 
 ## Dependency
 
-Forms depends upon the Self Libaray, a prototype-based object system:
+Forms depends upon the Self Library, a prototype-based object system:
 [VIM](http://www.vim.org/scripts/script.php?script_id=3072)
 or 
 [GitHup]( https://github.com/megaannum/self)
@@ -60,6 +148,8 @@ After unpacking the ColorSchemer directory layout should look like:
             test/  
               " test source files (c, pl, java, scala, tex, html)
               " users can add addition ones
+      plugin/
+        colorschemer.vim
 
 
 ## Intalling with vim-addon-manager (VAM)
@@ -103,13 +193,16 @@ if you would like to download and install the self plugin (no dependencies).
 
 I do not use pathogen. An example usage would be welcome.
 
-# Supported Platforms
+# Usage
 
-Ought to work where ever Forms works.
+There is a mapping in the plugin directory for the colorschemer
+which will bring up a Form which allows one to review the various
+color scheme files available both with this utility and else where
+on one's system.
 
-## Running
+    nmap <Leader>cv :call colorschemer#viewer#ViewerForm()<CR>
 
-To run the viewer, execute any of the following.
+The various viewer can also be execute with the following.
 
 For distilled color schemes generated using Vim
 
@@ -138,8 +231,15 @@ To access any of the above color scheme viewing options use:
 
     call colorschemer#viewer#ViewerForm()
 
+
+# Supported Platforms
+
+Ought to work where ever Forms works.
+
 ## Tutorial
 
 None available yet.
 
 ## Acknowledgements and thanks
+
+None yet.

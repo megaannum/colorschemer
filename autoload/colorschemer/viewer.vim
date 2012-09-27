@@ -17,15 +17,16 @@
 "   DDDDDDD
 " ============================================================================
 
-let g:version = "1.0"
+let g:max_lines = "25"
+let g:max_columns = "78"
+
+let g:test_file_version = "1.0"
 let g:test_file_path = "data/colorschemer/test/"
+
 let g:default_ctermbg = "247"
 let g:default_guibg = "#9e9e9e"
 let g:default_ctermfg = "237"
 let g:default_guifg = "#393939"
-
-let g:max_lines = "25"
-let g:max_columns = "78"
 
 
 " used to capture the Color Scheme name in GetColorSchemeName
@@ -501,7 +502,7 @@ function! s:WriteFile(fileinfo)
   call add(l:lines, "\" Generated file from: " . a:fileinfo[2])
   call add(l:lines, "\" Applicaton: ColorSchemer")
   call add(l:lines, "\" Date: " . strftime("%Y%m%d %T"))
-  call add(l:lines, "\" Version: " . g:version)
+  call add(l:lines, "\" Version: " . g:test_file_version)
   call add(l:lines, "\" DO NOT EDIT")
   call add(l:lines, "")
   call add(l:lines, "let s:attrs = {")
@@ -950,10 +951,22 @@ let g:selected_colorscheme = cs
                             \ 'alignment': 'T' })
 
 
+  let title = 'Color Schemer'
+  let titlelabel = forms#newLabel({ 'text': title})
+
+  let label = forms#newLabel({ 'text': 'Close'})
+  let closebutton = forms#newButton({
+                            \ 'body': label,
+                            \ 'action': g:forms#cancelAction})
+
   let vpoly = forms#newVPoly({ 'children': [
+                            \ titlelabel, 
                             \ hpoly, 
-                            \ deck], 
-                            \ 'alignment': 'L' })
+                            \ deck,
+                            \ closebutton], 
+                            \ 'alignment': 'L',
+                            \ 'alignments': [[0,'C'],[3,'R']] 
+                            \ })
 
   let b = forms#newBorder({ 'body': vpoly})
   let bg = forms#newBackground({ 'body': b })
@@ -1123,7 +1136,10 @@ function! colorschemer#viewer#ViewerForm()
   let g = s:MakeButton('Browse for Colors', FN)
   call add(children, g)
 
-  let title = forms#newLabel({ 'text': 'Select Color Scheme to View'})
+  let text = forms#newText({ 'textlines': [
+                         \  'Select Color Scheme Files',
+                         \  'to View'
+                         \ ]})
 
   let vpoly = forms#newVPoly({ 'children': children })
 
@@ -1140,16 +1156,12 @@ function! colorschemer#viewer#ViewerForm()
                       \ 'valignment': 'T',
                       \ 'halignments': [[0,'C'],[2,'R']],
                       \ 'data': [
-                      \ [0, 0, title],
+                      \ [0, 0, text],
                       \ [1, 0, vpoly],
                       \ [2, 0, closebutton]
                       \ ]
                       \ })
 
-if 0
-  let b = forms#newBorder({ 'body': vpoly })
-  let b = forms#newBox({ 'body': b })
-endif
   let bg = forms#newBackground({ 'body': grid} )
   let form = forms#newForm({'body': bg })
   call form.run()
