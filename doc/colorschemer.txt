@@ -1,0 +1,549 @@
+*colorschemer.txt*          For Vim version 7.3     Last change: 2012 Oct 01
+
+Author:      Richard Emberson 
+Version:     1.0
+Title:       Color Schemer Utilities
+Homepage:    TODO
+
+For Vim instructions on installing this 'txt' file, enter:
+    :help add-local-help
+
+==============================================================================
+0. Contents                               *colorschemer* *colorschemer-contents*
+
+  0. Content                                 |colorschemer-contents|
+  1. Introduction                            |colorschemer-intro|
+  2. Installation                            |colorschemer-install|
+      2.1 Download                               |colorschemer-download|
+      2.2 Dependency                             |colorschemer-dependency|
+      2.3 Directory layout                       |colorschemer-directory-layout|
+  3. Options                                 |colorschemer-options|
+      3.1 Window Text Dump 
+      3.2 Window Image 
+      3.3 Log File
+      3.4 Gui Font
+      3.5 Highlight Colors
+          3.5.1 Light Color Variables and Default Values
+          3.5.2 Dark Color Variables and Default Values
+  4. Mappings                                |colorschemer-mappings|
+  5. Supported Platforms                     |colorschemer-platforms|
+  6. Distill                                 |colorschemer-distill|
+  7. Viewer                                  |colorschemer-viewer|
+  8. FAQ                                     |colorschemer-faq|
+    8.1 User                                 |colorschemer-faq-user|
+    8.2 Developer                            |colorschemer-faq-developer|
+  9. Release notes                           |colorschemer-release-notes|
+  10. Todo List                              |colorschemer-todo|
+  11. Questions                              |colorschemer-questions|
+
+==============================================================================
+1. Introduction                                            *colorschemer-intro*
+
+{ColorSchemer} is a Vim script utility with three major components: 
+a collection of third-party Vim color scheme files and
+the distill and viewer scripts.
+The running of the {ColorSchemer} scripts depends upon having
+the {Forms} Vim library installed:
+[www.vim.org](http://www.vim.org/scripts/script.php?script_id=4150).
+
+The collection of source, third-party color schemes have been collected
+using a bash script 
+(downloadVimColorSchemes.sh)[https://github.com/megaannum/vim_color_schemes_downloader]. This script searches and scraps the Vim web site for both
+Vim color schemes and collections of Vim color schemes. It then, using
+rather simple heuristics, attempts to eliminate duplicates and earlier
+versions and yields some 687 color scheme files. These source files
+are part of the colorschemer distribution.
+
+The {distill} component is a script that read color scheme files and
+generates "distilled" versions of those color schemes. The distillation
+process does a number of things:
+
+* Removes redundant highlight group declarations. 
+    If the identical declaration is part of the default color scheme, then 
+    there is no reason to declare it in a color scheme since it will be 
+    inherited.
+
+* Removes redundant highlight group key/value entries,
+    For a given group, if the same key/value pair appear in both a
+    color scheme and the default color scheme, then there is no reason
+    to repeat the definition since it will be inherited.
+
+* Removes redundant highlight group linking.
+    If the default color scheme links a given group to another, then
+    there is no reason to repeat the link statement in the color
+    scheme file.
+
+* Some color scheme files use scripts to generate the highlight 
+    declarations. As part of the distillation process, such scripts
+    are executed and the highlight results are then saved, not the
+    original scrips.
+
+* Some color schemes declare that the background is 'dark'; others that
+    that the background is 'light'. Some execute different highlight
+    group declarations depending upon the value of the background option
+    on script execution, 'light' or 'dark'. Some color schemes define
+    Normal group foreground/background values while others do not.
+    And, lastly, some color schemes lie; they declare that is background
+    should be 'dark' ('light') while the Normal group defines values
+    that are 'light' ('dark').
+    The {distill} script sorts all this out. In some cases two distilled
+    output color scheme files are generated, one 'dark' and one 'light'
+    because the input color scheme file did code branching based upon
+    the value of the background option on script execution.
+    Other generated color schemes declare one background value even if
+    the input color scheme declared the other simply because the defined
+    Normal group values take precedence over any background declaration
+    within a source color scheme file (I figured that this was the
+    correct approach when such situations occurred).
+
+* Some color schemes do not have any highlight group key/values for GVim 
+    (Vim), that is, there are definitions such as:
+
+        guifg=White guibg=#020202 (ctermfg=244 ctermbg=2)
+    
+    but none for ctermfg or ctermbg (guifg or guibg).
+    In these cases, if key/value term does not exist for Vim (GVim), 
+    then the corresponding value from the key/value definition for GVim
+    (Vim) is used.
+    There are rather more color scheme files defined for GVim than for
+    Vim, so the distillation process makes such conversion. The result
+    is that there are as many Vim definitions as GVim definitions.
+
+* The generated distilled color scheme files have sections for GVim,
+    256 color Xterm, 88 color URvxt, 16 color Xterm and 8 color Xterm.
+
+One can run the distill Vim script from within GVim or Vim and the
+results will differ. This is primarily due to the fact that some
+source color scheme files are GVim only and some are Vim only (or even
+&t_Co == 256 only). It is also the case that the default color scheme
+and its key/value definitions some times have different values 
+depending upon if one is running GVim or Vim.
+
+At any rate, the source 687 color scheme files when Vim is used
+yields 486 dark and 290 light (776 total) color scheme files and, when GVim
+is used, 487 dark and 275 light (762 total) color scheme files.
+Each of these has key/value definitions tailored the five was described above.
+
+Lastly, the end user can run the distill script on the source
+color scheme files (or, other color scheme files) and generate (re-generate)
+their own distilled versions.
+
+
+The {viewer} component is a script that allows one to easily and quickly
+look at different syntax file-types using any of the above color schemes.
+One can toggle through both target files and the color schemes to apply to
+those files.
+
+There are currently 6 example test files located in the
+'data/colorschemer/test' directory:
+
+    GetEnv.java       
+    checkvowel.c      
+    docsubset.pl      
+    match.scala      
+    test.tex         
+    tiny.html
+
+The {viewer} script takes these files and generated "processed" files
+that are then used as the file-type files:
+
+    GetEnv_java.vim   
+    checkvowel_c.vim  
+    docsubset_pl.vim  
+    match_scala.vim  
+    test_tex.vim
+    tiny_html.vim
+
+These processed files, basically, cache information needed by the viewer;
+specifically, their text it self, which syntax highlight group applies
+to what area of text and the name of the source test file.
+
+A list of these files appear in the viewer select list which also
+has up/down buttons allowing for quick iteration.
+
+A user can add their own test file-type file to the 
+'data/colorschemer/test' directory and the viewer will process it and
+it will become part of the files available in the viewer.
+Note that such files will be clipped both in number of lines and number
+of columns so that they fit within the viewer. The value of the
+clipping can be found in the viewer.vim script:
+
+    let g:max_lines = "25"
+    let g:max_columns = "78"
+
+These can be changed and the processed files re-generated but the
+size of the Vim console window or GVim window will have to change
+to accommodate any new size.
+
+Note, if you have a particular syntax file-type test file example you
+would like to contribute to the {ColorSchemer} distribution, drop me a line.
+
+The viewer also has a select list with up/down buttons of the selected
+color schemes (arranged alphabetically). Again, the up/down buttons allow
+for quick iteration.
+
+Lastly, the viewer has a display area where the text of the test files
+is displayed with the selected color scheme applied.
+
+I bet you had no idea that such a thing was even possible in Vim using VimL.
+
+
+Why create {ColorSchemer}? First, its a demonstration of the power of
+the {Forms} library. Also, I wanted access to all of the color schemes
+that were designed only for GVim and, in general, it provides a quick,
+native, way to look at lots of color schemes.
+
+==============================================================================
+2. Installation                                          *colorschemer-install*
+
+2.1 Download                                             *colorschemer-download*
+
+A zip snapshot of the {ColorSchemer} library can be downloaded 
+from [www.vim.org](http://www.vim.org/scripts/script.php?script_id=4240)
+
+
+In your Vim home, normally $HOME/.vim in Unix, unzip the file: 
+
+    # cd $HOME/.vim
+    # unzip colorschemer.zip
+
+    
+On a Windows system, vim home is normally $HOME/vimfiles. 
+
+    TODO how to unpack on Windows?
+
+{ColorSchemer} is also available via
+[githup](http://github.com/megaannum/colorschemer).
+One can download a release from github and extract content.
+
+If as a developer, one wants fixes as they appear, one can clone the 
+github {ColorSchemer} repository and, as updates appear, copy the files
+over to you Vim home location.
+
+Vim has a number of third-party plugin managers. If you are using one
+you can configure it to automatically download and install {ColorSchemer}.
+TODO how to use VAM plugin manager
+
+
+2.2 Dependency                                  *colorschemer-dependency*
+
+{ColorSchemer} depends upon {Forms} library 
+    http://www.vim.org/scripts/script.php?script_id=4150
+or 
+    https://github.com/megaannum/forms
+
+and the {Self} Libaray, a prototype-based object system: 
+    http://www.vim.org/scripts/script.php?script_id=3072
+or 
+    https://github.com/megaannum/self
+
+
+2.3 Directory layout                             *colorschemer-directory-layout*
+
+After unpacking the {Forms} directory layout should look like: 
+    $HOME/.vim/
+      autoload/
+        colorschemer/
+          distill.vim  
+            " generate distilled color scheme files 
+          util.vim  
+          viewer.vim
+            " view test files with their syntax allowing for
+            " very quick toggling through color schemes
+      data/
+        " data that persists between invocations of a plugin
+        colorschemer/
+            " colorschemer data 
+            colors/  
+              " source Vim color scheme files (some 688 of them!)
+            distilled/  
+              " target directory for files generated by distill.vim
+            distilled.cterm/  
+              " generated using distill.vim in Vim
+            distilled.gui/  
+              " generated using distill.vim in GVim
+            test/  
+              " test source files (c, pl, java, scala, tex, html)
+              " users can add addition ones
+      plugin/
+        colorschemer.vim
+
+If a plugin manager is used, files/directories will be wherever the
+plugin manager is configured to install things.
+
+Here the {autoload} directory contains a {colorschemer} sub-directory.
+In the {colorschemer} sub-directory are three Vim script files: distill.vim, 
+viewer.vim and util.vim.
+
+The {data} directory contains a {colorschemer} sub-directory. This
+sub-directory contains the test files in the {test} directory, the
+source color scheme files in the {colors} directory,
+the {distilled.cterm} and {distilled.gui} directory which contains
+distilled version of the source color scheme files and the
+{distilled} directory where, if a user runs the distill.vim script,
+output color scheme files will be placed.
+
+The {doc} directory contains this documentation txt file {colorschemer.txt}.
+
+The {plugin} directory contains a {colorschemer.vim} file that contains mapping
+for launching the colorschemer viewer.
+
+==============================================================================
+3. Options                                               *colorschemer-options*
+
+The {ColorSchemer} utilities have a small number of configuration options. 
+If a user wished to tailor the configuration, the option should 
+be defined prior to loading the {ColorSchemer} code.
+
+Distill Output Sub-Directories~
+
+There are two options, one for 'dark' color schemes and the for 'light'
+which define relative to the output directory where to put the
+distilled color scheme files.
+The option variables are:
+
+    g:colorschemer_dark_outdirectory
+and
+    g:colorschemer_light_outdirectory
+
+and their default values as found in the distill.vim script are:
+
+    if ! exists("g:colorschemer_dark_outdirectory")
+        let g:colorschemer_dark_outdirectory = "dark/colors"
+    endif
+    if ! exists("g:colorschemer_light_outdirectory")
+        let g:colorschemer_light_outdirectory = "light/colors"
+    endif
+
+Maximum Columns and Lines in Viewer~
+
+A color scheme {Viewer} has to fit into the Vim/GVim window, i.e., its size,
+height and width, must be less than or equal to the windows
+height and width. A {Viewer} displays the syntax file-type test file text.
+This text, number of lines and length of each line needs to fit within
+a sub-set of the {Viewer}'s height and width. Any text lines that are too
+long are clipped. Any text lines beyond the height of the {Viewer}
+are discarded.
+
+There are two options that defined the expected number of lines and
+column lengths for such text:
+
+    g:colorschemer_max_lines
+
+and
+
+    g:colorschemer_max_columns
+
+They have default values set at the top of the viewer.vim script file:
+
+
+    if ! exists("g:colorschemer_max_lines")
+        let g:colorschemer_max_lines = "25"
+    endif 
+    if ! exists("g:colorschemer_max_columns")
+        let g:colorschemer_max_columns = "78"
+    endif 
+
+Adding a test file with more lines than the max-lines will be 
+truncated. Any lines longer than max-columns will be clipped.
+
+If a user changes the value of these options, then for the new 
+values to take effect, the existing test files must be re-processed.
+Re-processing occurs automatically if the processing output files
+are deleted. That is, the Vim files in the 'data/colorschemer/test'
+with signature *_'suffix'.vim where 'suffix' is a file-type suffix
+('java', 'c', 'vim', 'scala', 'html', 'xml', etc.). Or, re-processing
+can occur if the source file-type files have a later file system
+timestamp than their corresponding output files. On Unix simply
+"touch" each input file and the output files will be re-generated
+the next time a viewer is run.
+
+
+Default Normal FG and BG Colors~
+
+Sometimes a source color scheme does not define the 'Normal' group highlight.
+You will note that if you start Vim/GVim with the default color scheme
+(or you switch to the default color scheme) and then execute:
+
+    :highlight Normal
+
+Vim will respond back
+
+    Normal   xxx cleared
+
+All of which is to say that there is no default Normal foreground or
+background colors.
+
+With this in mind, the viewer script has variables that allow the user
+to define their own default cterm/gui foreground/background default
+colors:
+
+    g:colorschemer_default_normal_ctermbg
+    g:colorschemer_default_normal_guibg
+    g:colorschemer_default_normal_ctermfg
+    g:colorschemer_default_normal_guifg
+
+If the user does not define their own values for these, the following
+values are set in viewer.vim:
+
+    if ! exists("g:colorschemer_default_normal_ctermbg")
+        let g:colorschemer_default_normal_ctermbg = "247"
+    endif
+    if ! exists("g:colorschemer_default_normal_guibg")
+        let g:colorschemer_default_normal_guibg = "#9e9e9e"
+    endif
+    if ! exists("g:colorschemer_default_normal_ctermfg")
+        let g:colorschemer_default_normal_ctermfg = "237"
+    endif
+    if ! exists("g:colorschemer_default_normal_guifg")
+        let g:colorschemer_default_normal_guifg = "#393939"
+    endif
+
+
+==============================================================================
+4. Mappings                                            *colorschemer-mappings*
+
+The single {ColorSchemer} mapping is in the {plugin/colorschemer.vim} file. 
+
+    nmap <Leader>cv :call colorschemer#viewer#ViewerForm()<CR>
+
+This will start the Viewer form that allow for the choice of the
+viewers that use color scheme files from the available locations,
+as well as, allows the user to browser their file system for
+a 'colors' directory containing color scheme files.
+==============================================================================
+5. Supported Platforms                                 *colorschemer-platforms*
+
+The {ColorSchemer} scripts ought to run on any of the platforms that support
+the underlying {Forms} libray.
+
+==============================================================================
+6. Distill                                              *colorschemer-distill*
+
+With the distill.vim script, 
+
+    colorschemer#distill#ALL()
+
+the color scheme files located in 
+
+    'data/colorschemer/colors' 
+
+will be distilled and the generated color scheme files place in the directories:
+
+    'data/colorschemer/distilled/dark'
+
+and
+
+    'data/colorschemer/distilled/light'.
+
+The above processes all 687 of the files. 
+It may take 1/2 hour or more.
+There may be a few error messages, but unless the window fills with
+such messages (and, thus, processing stop waiting for a user <CR>)
+they can be ignored.
+
+Depending upon the use of Vim or GVim, the output color scheme files
+may be different.
+
+
+So, how to process just a single color scheme file producing distilled
+versions. There is a function
+
+    colorschemer#distill#MakeDistilledColorSchemeFile
+
+which take three parameters:
+
+    csname      : String name of color scheme
+    infiledir   : String input directory
+    outfiledir  : String output directory
+
+which will quickly distill a single color scheme file.
+It will generate a single 'dark' or 'light' file or, possible two
+files, a 'dark' one and 'light' one depending on the source file.
+
+==============================================================================
+7. Viewer                                               *colorschemer-viewer*
+
+There is one basic viewer function 
+
+    colorschemer#viewer#Viewer(dir)
+
+which takes a single parameter, a directory one level up from 
+a 'colors' sub-directory.
+
+For example, $HOME/.vim ($HOME/vimfiles) would be a valid parameter
+value because $HOME/.vim/colors ($HOME/vimfiles/colors) is the location
+of color scheme files.
+
+The reason that the parameter must be a directory just one level above
+a 'colors' sub-directory where the color scheme files are located is
+because the parameter directory is appended to the front of Vim's
+runtimepath. This allows Vim to invoke its standard 'colorscheme'
+command to load a color scheme. Any other approach may not accurately
+reproduce a specific color scheme.
+
+There are a number of secondary functions that load the viewer with
+known color scheme file directory locations.
+
+For distilled color schemes generated using Vim
+
+    call colorschemer#viewer#ViewerDistilledCtermDark()
+    call colorschemer#viewer#ViewerDistilledCtermLight()
+
+For distilled color schemes generated using GVim
+
+    call colorschemer#viewer#ViewerDistilledGuiDark()
+    call colorschemer#viewer#ViewerDistilledGuiLight()
+
+For distilled color schemes generated a new by end user
+
+    call colorschemer#viewer#ViewerDistilledDark()
+    call colorschemer#viewer#ViewerDistilledLight()
+
+For color schemes found in user's $HOME/.vim/colors or $HOME/vimfiles/colors
+
+    call colorschemer#viewer#ViewerHomeColors()
+
+To browse local directories for 'colors' directory to view
+
+    call colorschemer#viewer#ViewerBrowse()
+
+To access any of the above color scheme viewing options use:
+
+    call colorschemer#viewer#ViewerForm()
+
+
+==============================================================================
+8. FAQ                                                         *colorschemer-faq*
+  8.1 User                                                colorschemer-faq-user*
+
+    Q: None Yet
+
+    A: None Yet
+
+
+  8.2 Developer                                      colorschemer-faq-developer*
+
+    Q: None Yet
+
+    A: None Yet
+
+==============================================================================
+9. Release notes                                  *colorschemer-release-notes*
+1.0   - Initial Release: ~
+    This is the initial release of the {ColorSchemer} utilities.
+
+==============================================================================
+10. Todo List                                               *colorschemer-todo*
+    * Determine why some distilled 'light' ('dark') look like they
+      have 'dark' ('light') backgrounds.
+
+==============================================================================
+11. Questions                                      colorschemer-questions*
+
+    Q: None
+
+
+==============================================================================
+
+ vim:tw=78:ts=8:noet:ft=help:fo+=t:norl:noet:

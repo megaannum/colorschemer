@@ -32,9 +32,15 @@
 
 let s:ColorSchemerVersion = "1.0"
 
-let g:dark_outdirectory = "dark/colors"
-let g:light_outdirectory = "light/colors"
-let g:none_outdirectory = "none/colors"
+if ! exists("g:colorschemer_dark_outdirectory")
+  let g:colorschemer_dark_outdirectory = "dark/colors"
+endif
+if ! exists("g:colorschemer_light_outdirectory")
+  let g:colorschemer_light_outdirectory = "light/colors"
+endif
+if ! exists("g:colorschemer_none_outdirectory")
+  let g:colorschemer_none_outdirectory = "none/colors"
+endif
 
 if exists("$USER")
   let s:UserName = $USER
@@ -1532,11 +1538,11 @@ endfunction
 "---------------------------------------------------------------------------
 function! s:GetOutDirectory(background, outfiledir)
   if a:background == "dark"
-    return a:outfiledir . '/' . g:dark_outdirectory 
+    return a:outfiledir . '/' . g:colorschemer_dark_outdirectory 
   elseif a:background == "light"
-    return a:outfiledir . '/' . g:light_outdirectory 
+    return a:outfiledir . '/' . g:colorschemer_light_outdirectory 
   else
-    return a:outfiledir . '/' . g:none_outdirectory 
+    return a:outfiledir . '/' . g:colorschemer_none_outdirectory 
   endif
 endfunction
 

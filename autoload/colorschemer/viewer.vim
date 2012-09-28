@@ -13,20 +13,31 @@
 "
 " ============================================================================
 " Intro: {{{1
-" CCCCCCCCCCC
-"   DDDDDDD
+" View file-type test files applying color schemes.
 " ============================================================================
 
-let g:max_lines = "25"
-let g:max_columns = "78"
+if ! exists("g:colorschemer_max_lines")
+  let g:colorschemer_max_lines = "25"
+endif
+if ! exists("g:colorschemer_max_columns")
+  let g:colorschemer_max_columns = "78"
+endif
 
 let g:test_file_version = "1.0"
 let g:test_file_path = "data/colorschemer/test/"
 
-let g:default_ctermbg = "247"
-let g:default_guibg = "#9e9e9e"
-let g:default_ctermfg = "237"
-let g:default_guifg = "#393939"
+if ! exists("g:colorschemer_default_normal_ctermbg")
+  let g:colorschemer_default_normal_ctermbg = "247"
+endif
+if ! exists("g:colorschemer_default_normal_guibg")
+  let g:colorschemer_default_normal_guibg = "#9e9e9e"
+endif
+if ! exists("g:colorschemer_default_normal_ctermfg")
+  let g:colorschemer_default_normal_ctermfg = "237"
+endif
+if ! exists("g:colorschemer_default_normal_guifg")
+  let g:colorschemer_default_normal_guifg = "#393939"
+endif
 
 
 " used to capture the Color Scheme name in GetColorSchemeName
@@ -64,7 +75,8 @@ let g:selected_colorscheme = s:current_colorscheme
 "---------------------------------------------------------------------------
 " s:GetNormalBackground: {{{3
 "   Returns the Normal group value associated with guibg/ctermbg
-"     if available else g:default_guibg or g:default_ctermbg.
+"     if available else g:colorschemer_default_normal_guibg or 
+"     g:colorschemer_default_normal_ctermbg.
 "     This is the value associated with the Color Scheme currently
 "     controlling the display.
 "  parameters: None
@@ -91,13 +103,16 @@ function! s:GetNormalBackground()
     call forms#logforce("GetNormalBackground: error=" . l:dict.error)
   endif
 
-  return has("gui_running") ? g:default_guibg : g:default_ctermbg 
+  return has("gui_running") 
+        \ ? g:colorschemer_default_normal_guibg 
+        \ : g:colorschemer_default_normal_ctermbg 
 endfunction
 
 "---------------------------------------------------------------------------
 " s:GetNormalForeground: {{{3
 "   Returns the Normal group value associated with guifg/ctermfg
-"     if available else g:default_guifg or g:default_ctermfg.
+"     if available else g:colorschemer_default_normal_guifg 
+"     or g:colorschemer_default_normal_ctermfg.
 "     This is the value associated with the Color Scheme currently
 "     controlling the display.
 "  parameters: None
@@ -124,7 +139,9 @@ function! s:GetNormalForeground()
     call forms#logforce("GetNormalForeground: error=" . l:dict.error)
   endif
 
-  return has("gui_running") ? g:default_guifg : g:default_ctermfg 
+  return has("gui_running") 
+        \ ? g:colorschemer_default_normal_guifg 
+        \ : g:colorschemer_default_normal_ctermfg 
 endfunction
 
 "---------------------------------------------------------------------------
@@ -332,16 +349,16 @@ if 1
   
   " range does not span multiple lines
   let llen = len(a:lines)
-  if llen > g:max_lines
-    let llen = g:max_lines
+  if llen > g:colorschemer_max_lines
+    let llen = g:colorschemer_max_lines
   endif
   let lcnt = 0
   while lcnt < llen
     let previd = -1
     let line = a:lines[lcnt]
     let clen = len(line)
-    if clen > g:max_columns
-      let clen = g:max_columns
+    if clen > g:colorschemer_max_columns
+      let clen = g:colorschemer_max_columns
     endif
     let ccnt = 0
     while ccnt < clen
@@ -509,14 +526,14 @@ function! s:WriteFile(fileinfo)
   call add(l:lines, "         \\ 'textlines': [")
   let cnt = 0
   let len = len(l:tflines)
-  if len > g:max_lines
-    let len = g:max_lines
+  if len > g:colorschemer_max_lines
+    let len = g:colorschemer_max_lines
   endif
   while cnt < len
     let l = l:tflines[cnt]
     let llen = len(l)
-    if llen > g:max_columns
-      let l = strpart(l, 0, g:max_columns)
+    if llen > g:colorschemer_max_columns
+      let l = strpart(l, 0, g:colorschemer_max_columns)
     endif
     let l = escape(l, "'\"\\")
 
