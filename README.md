@@ -107,7 +107,31 @@ Examples images of what can be seen using the Viewer are in the
 
 ## Download
 
-Not installed at www.vim.org yet.
+A zip snapshot of the {ColorSchemer} library can be downloaded 
+from [www.vim.org](http://www.vim.org/scripts/script.php?script_id=4240)
+
+
+In your Vim home, normally $HOME/.vim in Unix, unzip the file: 
+
+    # cd $HOME/.vim
+    # unzip colorschemer.zip
+
+    
+On a Windows system, vim home is normally $HOME/vimfiles. 
+
+    TODO how to unpack on Windows?
+
+{ColorSchemer} is also available via
+[githup](http://github.com/megaannum/colorschemer).
+One can download a release from github and extract content.
+
+If as a developer, one wants fixes as they appear, one can clone the 
+github {ColorSchemer} repository and, as updates appear, copy the files
+over to you Vim home location.
+
+Vim has a number of third-party plugin managers. If you are using one
+you can configure it to automatically download and install {ColorSchemer}.
+TODO how to use VAM plugin manager
 
 ## Dependency
 
@@ -148,6 +172,8 @@ After unpacking the ColorSchemer directory layout should look like:
             test/  
               " test source files (c, pl, java, scala, tex, html)
               " users can add addition ones
+      doc/
+        colorschemer.txt
       plugin/
         colorschemer.vim
 

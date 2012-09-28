@@ -265,6 +265,8 @@ After unpacking the {Forms} directory layout should look like:
             test/  
               " test source files (c, pl, java, scala, tex, html)
               " users can add addition ones
+      doc/
+        colorschemer.txt
       plugin/
         colorschemer.vim
 
