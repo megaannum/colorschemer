@@ -4,7 +4,7 @@
 " Name: darkZ
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:36:57
+" Date: 2012-09-29 13:32:49
 "----------------------------------------------------------
 
 set background=dark

@@ -4,7 +4,7 @@
 " Name: jellyx
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:42:18
+" Date: 2012-09-29 13:37:06
 "----------------------------------------------------------
 
 set background=dark

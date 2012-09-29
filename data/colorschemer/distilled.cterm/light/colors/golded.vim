@@ -4,7 +4,7 @@
 " Name: golded
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:46:51
+" Date: 2012-09-29 13:12:50
 "----------------------------------------------------------
 
 set background=light

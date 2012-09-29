@@ -4,7 +4,7 @@
 " Name: vydark
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:58:47
+" Date: 2012-09-29 13:22:18
 "----------------------------------------------------------
 
 set background=dark

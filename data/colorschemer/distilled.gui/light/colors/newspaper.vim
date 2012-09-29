@@ -4,7 +4,7 @@
 " Name: newspaper
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:46:10
+" Date: 2012-09-29 13:40:11
 "----------------------------------------------------------
 
 set background=light

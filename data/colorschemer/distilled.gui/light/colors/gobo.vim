@@ -4,7 +4,7 @@
 " Name: gobo
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:40:04
+" Date: 2012-09-29 13:35:18
 "----------------------------------------------------------
 
 set background=light

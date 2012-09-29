@@ -4,7 +4,7 @@
 " Name: softlight
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:51:49
+" Date: 2012-09-29 13:44:43
 "----------------------------------------------------------
 
 set background=light

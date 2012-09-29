@@ -4,7 +4,7 @@
 " Name: DimBlue
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:33:45
+" Date: 2012-09-29 13:30:16
 "----------------------------------------------------------
 
 set background=dark

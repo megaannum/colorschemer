@@ -4,7 +4,7 @@
 " Name: bog
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:43:25
+" Date: 2012-09-29 13:10:06
 "----------------------------------------------------------
 
 set background=light

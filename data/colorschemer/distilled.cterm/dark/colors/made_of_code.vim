@@ -4,7 +4,7 @@
 " Name: made_of_code
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:49:33
+" Date: 2012-09-29 13:15:00
 "----------------------------------------------------------
 
 set background=dark
@@ -42,7 +42,7 @@ if has("gui_running")
   hi Number guifg=#0a9cff
   hi Operator guifg=#ff3854
   hi Pmenu guifg=#6fd3ff guibg=NONE
-  hi PmenuSel guifg=none guibg=#05448d
+  hi PmenuSel guifg=NONE guibg=#05448d
   hi PreProc guifg=#ff3854
   hi Search guifg=NONE guibg=#233466
   hi Special guifg=#f8f8f8

@@ -4,7 +4,7 @@
 " Name: desertEx
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:45:20
+" Date: 2012-09-29 13:11:38
 "----------------------------------------------------------
 
 set background=dark

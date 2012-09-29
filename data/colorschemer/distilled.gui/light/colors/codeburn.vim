@@ -4,7 +4,7 @@
 " Name: codeburn
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:36:11
+" Date: 2012-09-29 13:32:12
 "----------------------------------------------------------
 
 set background=light

@@ -4,7 +4,7 @@
 " Name: hornet
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:41:35
+" Date: 2012-09-29 13:36:31
 "----------------------------------------------------------
 
 set background=dark

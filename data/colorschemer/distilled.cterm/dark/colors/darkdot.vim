@@ -4,7 +4,7 @@
 " Name: darkdot
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:44:52
+" Date: 2012-09-29 13:11:15
 "----------------------------------------------------------
 
 set background=dark
@@ -42,9 +42,9 @@ if has("gui_running")
   hi Search guifg=green guibg=NONE
   hi Special gui=bold guifg=#6666ff
   hi SpecialKey guifg=#4444ff
-  hi SpellBad guifg=#ff0000 guibg=none
-  hi SpellCap guifg=#5c5cff guibg=none
-  hi SpellRare guifg=#ff00ff guibg=none
+  hi SpellBad guifg=#ff0000 guibg=NONE
+  hi SpellCap guifg=#5c5cff guibg=NONE
+  hi SpellRare guifg=#ff00ff guibg=NONE
   hi Statement guifg=#44ffff
   hi StatusLine gui=NONE guifg=#ffffff guibg=#00aaaa
   hi StatusLineNC gui=NONE guifg=#000000 guibg=#bbbbbb

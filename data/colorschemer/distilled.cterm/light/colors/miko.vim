@@ -4,7 +4,7 @@
 " Name: miko
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:50:11
+" Date: 2012-09-29 13:15:29
 "----------------------------------------------------------
 
 set background=light

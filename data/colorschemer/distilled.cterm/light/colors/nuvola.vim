@@ -4,7 +4,7 @@
 " Name: nuvola
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:51:57
+" Date: 2012-09-29 13:16:53
 "----------------------------------------------------------
 
 set background=light

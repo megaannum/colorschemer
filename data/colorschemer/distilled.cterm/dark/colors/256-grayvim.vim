@@ -4,7 +4,7 @@
 " Name: 256-grayvim
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:42:22
+" Date: 2012-09-29 13:09:16
 "----------------------------------------------------------
 
 set background=dark
@@ -22,7 +22,7 @@ if has("gui_running")
   hi LineNr guibg=#262626
   hi Pmenu guifg=#ffffff
   hi PmenuSbar guifg=#6c6c6c
-  hi PmenuSel guifg=none
+  hi PmenuSel guifg=NONE
   hi PmenuThumb guifg=#a8a8a8
   hi StatusLine guifg=#9e9e9e guibg=#121212
   hi StatusLineNC guifg=#9e9e9e guibg=#1c1c1c

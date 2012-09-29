@@ -4,7 +4,7 @@
 " Name: fine_blue2
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:46:21
+" Date: 2012-09-29 13:12:26
 "----------------------------------------------------------
 
 set background=light

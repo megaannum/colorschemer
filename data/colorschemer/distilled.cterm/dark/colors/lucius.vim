@@ -4,7 +4,7 @@
 " Name: lucius
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:49:29
+" Date: 2012-09-29 13:14:56
 "----------------------------------------------------------
 
 set background=dark
@@ -56,10 +56,10 @@ if has("gui_running")
   hi SignColumn guifg=#b2b2b2 guibg=#4e4e4e
   hi Special guifg=#d7afd7
   hi SpecialKey guifg=#5f875f
-  hi SpellBad guifg=#d70000 guibg=none
-  hi SpellCap guifg=#00afd7 guibg=none
-  hi SpellLocal guifg=#d7af00 guibg=none
-  hi SpellRare guifg=#5faf00 guibg=none
+  hi SpellBad guifg=#d70000 guibg=NONE
+  hi SpellCap guifg=#00afd7 guibg=NONE
+  hi SpellLocal guifg=#d7af00 guibg=NONE
+  hi SpellRare guifg=#5faf00 guibg=NONE
   hi Statement gui=NONE guifg=#87d7ff
   hi StatusLine gui=bold guifg=bg guibg=#b2b2b2
   hi StatusLineNC gui=NONE guifg=#444444 guibg=#b2b2b2

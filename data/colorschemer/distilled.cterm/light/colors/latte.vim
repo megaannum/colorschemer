@@ -4,7 +4,7 @@
 " Name: latte
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:48:52
+" Date: 2012-09-29 13:14:27
 "----------------------------------------------------------
 
 set background=light

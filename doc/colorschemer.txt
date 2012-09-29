@@ -1,7 +1,7 @@
 *colorschemer.txt*          For Vim version 7.3     Last change: 2012 Oct 01
 
 Author:      Richard Emberson 
-Version:     1.0
+Version:     1.1
 Title:       Color Schemer Utilities
 Homepage:    TODO
 
@@ -120,8 +120,8 @@ and its key/value definitions some times have different values
 depending upon if one is running GVim or Vim.
 
 At any rate, the source 687 color scheme files when Vim is used
-yields 486 dark and 290 light (776 total) color scheme files and, when GVim
-is used, 487 dark and 275 light (762 total) color scheme files.
+yields 491 dark and 286 light (777 total) color scheme files and, when GVim
+is used, 495 dark and 286 light (781 total) color scheme files.
 Each of these has key/value definitions tailored the five was described above.
 
 Lastly, the end user can run the distill script on the source
@@ -532,6 +532,11 @@ To access any of the above color scheme viewing options use:
 
 ==============================================================================
 9. Release notes                                  *colorschemer-release-notes*
+1.1    - Fix: ~
+    Did not always display correct color scheme first time.
+    Now when distilled dark and light are different but both have the
+      same background type (light or dark) both files are generated only
+      in the background type directory.
 1.0   - Initial Release: ~
     This is the initial release of the {ColorSchemer} utilities.
 

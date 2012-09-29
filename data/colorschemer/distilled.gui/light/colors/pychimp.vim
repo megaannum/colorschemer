@@ -4,7 +4,7 @@
 " Name: pychimp
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:48:44
+" Date: 2012-09-29 13:42:13
 "----------------------------------------------------------
 
 set background=light

@@ -4,7 +4,7 @@
 " Name: camo
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:35:18
+" Date: 2012-09-29 13:31:31
 "----------------------------------------------------------
 
 set background=dark

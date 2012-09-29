@@ -4,7 +4,7 @@
 " Name: kib_darktango
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:48:40
+" Date: 2012-09-29 13:14:17
 "----------------------------------------------------------
 
 set background=dark

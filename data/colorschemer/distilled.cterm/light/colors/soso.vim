@@ -4,7 +4,7 @@
 " Name: soso
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:55:51
+" Date: 2012-09-29 13:19:58
 "----------------------------------------------------------
 
 set background=light

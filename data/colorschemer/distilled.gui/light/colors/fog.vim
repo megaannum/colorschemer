@@ -4,7 +4,7 @@
 " Name: fog
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:39:33
+" Date: 2012-09-29 13:34:53
 "----------------------------------------------------------
 
 set background=light

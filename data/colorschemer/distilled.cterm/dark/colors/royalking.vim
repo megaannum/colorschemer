@@ -4,7 +4,7 @@
 " Name: royalking
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:54:19
+" Date: 2012-09-29 13:18:46
 "----------------------------------------------------------
 
 set background=dark

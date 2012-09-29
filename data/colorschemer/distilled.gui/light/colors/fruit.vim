@@ -4,7 +4,7 @@
 " Name: fruit
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:39:44
+" Date: 2012-09-29 13:35:02
 "----------------------------------------------------------
 
 set background=light

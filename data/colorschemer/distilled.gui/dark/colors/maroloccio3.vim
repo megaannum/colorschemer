@@ -4,7 +4,7 @@
 " Name: maroloccio3
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:44:06
+" Date: 2012-09-29 13:38:31
 "----------------------------------------------------------
 
 set background=dark

@@ -4,7 +4,7 @@
 " Name: autumn
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:34:10
+" Date: 2012-09-29 13:30:36
 "----------------------------------------------------------
 
 set background=light

@@ -4,7 +4,7 @@
 " Name: rainbow_neon
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:53:36
+" Date: 2012-09-29 13:18:11
 "----------------------------------------------------------
 
 set background=dark

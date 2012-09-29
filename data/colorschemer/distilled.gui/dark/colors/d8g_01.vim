@@ -4,7 +4,7 @@
 " Name: d8g_01
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:36:42
+" Date: 2012-09-29 13:32:37
 "----------------------------------------------------------
 
 set background=dark

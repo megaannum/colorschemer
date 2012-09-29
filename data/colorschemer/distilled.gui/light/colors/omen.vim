@@ -4,7 +4,7 @@
 " Name: omen
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:47:23
+" Date: 2012-09-29 13:41:09
 "----------------------------------------------------------
 
 set background=light

@@ -4,7 +4,7 @@
 " Name: bluechia
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:43:18
+" Date: 2012-09-29 13:10:00
 "----------------------------------------------------------
 
 set background=dark

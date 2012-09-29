@@ -4,7 +4,7 @@
 " Name: colorer
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:44:18
+" Date: 2012-09-29 13:10:48
 "----------------------------------------------------------
 
 set background=dark

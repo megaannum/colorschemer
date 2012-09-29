@@ -4,7 +4,7 @@
 " Name: bigbang
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:43:05
+" Date: 2012-09-29 13:09:51
 "----------------------------------------------------------
 
 set background=dark

@@ -4,7 +4,7 @@
 " Name: imperial
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:48:09
+" Date: 2012-09-29 13:13:52
 "----------------------------------------------------------
 
 set background=light

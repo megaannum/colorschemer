@@ -4,7 +4,7 @@
 " Name: asmanian2
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:34:04
+" Date: 2012-09-29 13:30:31
 "----------------------------------------------------------
 
 set background=dark

@@ -4,7 +4,7 @@
 " Name: shobogenzo
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:55:00
+" Date: 2012-09-29 13:19:18
 "----------------------------------------------------------
 
 set background=dark

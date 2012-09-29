@@ -4,7 +4,7 @@
 " Name: thestars
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:53:32
+" Date: 2012-09-29 13:46:06
 "----------------------------------------------------------
 
 set background=dark

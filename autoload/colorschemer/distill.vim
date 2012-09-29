@@ -5,7 +5,7 @@
 " Summary:       View Color Schemes
 " Author:        Richard Emberson <richard.n.embersonATgmailDOTcom>
 " Last Modified: 09/30/2012
-" Version:       1.0
+" Version:       1.1
 "
 " Tested on vim/gvim 7.3 on Linux
 "

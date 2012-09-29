@@ -4,7 +4,7 @@
 " Name: simplewhite
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:51:25
+" Date: 2012-09-29 13:44:22
 "----------------------------------------------------------
 
 set background=light

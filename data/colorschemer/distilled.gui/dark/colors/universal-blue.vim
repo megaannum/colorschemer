@@ -4,7 +4,7 @@
 " Name: universal-blue
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:54:55
+" Date: 2012-09-29 13:47:13
 "----------------------------------------------------------
 
 set background=dark

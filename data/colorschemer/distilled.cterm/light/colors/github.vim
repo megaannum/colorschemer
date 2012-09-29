@@ -4,7 +4,7 @@
 " Name: github
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:46:48
+" Date: 2012-09-29 13:12:47
 "----------------------------------------------------------
 
 set background=light

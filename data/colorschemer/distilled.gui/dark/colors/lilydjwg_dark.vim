@@ -4,7 +4,7 @@
 " Name: lilydjwg_dark
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:43:22
+" Date: 2012-09-29 13:37:58
 "----------------------------------------------------------
 
 set background=dark

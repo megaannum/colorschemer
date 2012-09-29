@@ -4,7 +4,7 @@
 " Name: twilight
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:57:46
+" Date: 2012-09-29 13:21:30
 "----------------------------------------------------------
 
 set background=light
@@ -72,7 +72,7 @@ if has("gui_running")
   hi StringDelimiter guifg=#00cd00
   hi Structure guifg=#00ffff
   hi Superclass guifg=#ff00ff
-  hi TabLine gui=italic guifg=none guibg=DarkGrey
+  hi TabLine gui=italic guifg=NONE guibg=DarkGrey
   hi TabLineFill gui=NONE guibg=#000000
   hi TabLineSel gui=bold,italic guifg=#000000 guibg=#ffffff
   hi Todo gui=bold

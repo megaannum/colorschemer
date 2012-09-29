@@ -4,7 +4,7 @@
 " Name: far
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:39:17
+" Date: 2012-09-29 13:34:40
 "----------------------------------------------------------
 
 set background=light

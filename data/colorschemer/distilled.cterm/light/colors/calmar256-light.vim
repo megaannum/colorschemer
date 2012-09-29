@@ -4,7 +4,7 @@
 " Name: calmar256-light
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:43:40
+" Date: 2012-09-29 13:10:18
 "----------------------------------------------------------
 
 set background=light
@@ -52,7 +52,7 @@ if has("gui_running")
   hi Special guifg=Orange guibg=#ffffaf
   hi SpecialChar guifg=#005f00
   hi SpecialKey guifg=Cyan
-  hi SpellBad guibg=none
+  hi SpellBad guibg=NONE
   hi SpellCap guibg=#9e9e9e
   hi SpellLocal guibg=#ffd7d7
   hi SpellRare guibg=#ffff87

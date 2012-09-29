@@ -4,7 +4,7 @@
 " Name: clean
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:44:01
+" Date: 2012-09-29 13:10:35
 "----------------------------------------------------------
 
 set background=light

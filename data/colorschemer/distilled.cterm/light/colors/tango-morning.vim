@@ -4,7 +4,7 @@
 " Name: tango-morning
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:56:27
+" Date: 2012-09-29 13:20:27
 "----------------------------------------------------------
 
 set background=light

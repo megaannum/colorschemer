@@ -4,7 +4,7 @@
 " Name: dejavu
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:37:39
+" Date: 2012-09-29 13:33:22
 "----------------------------------------------------------
 
 set background=light

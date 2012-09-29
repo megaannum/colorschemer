@@ -4,7 +4,7 @@
 " Name: rhinestones
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:49:47
+" Date: 2012-09-29 13:43:04
 "----------------------------------------------------------
 
 set background=dark

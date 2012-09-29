@@ -4,7 +4,7 @@
 " Name: xterm16
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:59:46
+" Date: 2012-09-29 13:23:05
 "----------------------------------------------------------
 
 set background=dark
@@ -22,15 +22,15 @@ if has("gui_running")
   hi DiffChange guifg=#afaf87
   hi DiffText guifg=#87af00
   hi IncSearch guifg=#a8a8a8 guibg=#000087
-  hi Pmenu guifg=none
-  hi PmenuSel guifg=none
+  hi Pmenu guifg=NONE
+  hi PmenuSel guifg=NONE
   hi SpellBad guibg=#1c1c1c
   hi SpellCap guibg=#1c1c1c
   hi SpellLocal guibg=#1c1c1c
-  hi SpellRare guibg=none
+  hi SpellRare guibg=NONE
   hi StatusLine guifg=#a8a8a8 guibg=#585858
   hi StatusLineNC guifg=#8a8a8a guibg=#303030
-  hi TabLine guifg=none
+  hi TabLine guifg=NONE
   hi TabLineFill guibg=#303030
   hi VertSplit guifg=#303030 guibg=#303030
   hi VisualNOS guibg=#1c1c1c

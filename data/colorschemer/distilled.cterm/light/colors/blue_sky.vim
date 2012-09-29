@@ -4,7 +4,7 @@
 " Name: blue_sky
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:43:17
+" Date: 2012-09-29 13:10:00
 "----------------------------------------------------------
 
 set background=light
@@ -58,10 +58,10 @@ if has("gui_running")
   hi SignColumn guifg=#eeee10 guibg=bg
   hi Special guifg=#642567 guibg=bg
   hi SpecialKey guifg=#d5034d guibg=bg
-  hi SpellBad guifg=#ff0000 guibg=none
-  hi SpellCap guifg=#ff0000 guibg=none
-  hi SpellLocal guifg=#ff5f00 guibg=none
-  hi SpellRare guifg=#ff5f5f guibg=none
+  hi SpellBad guifg=#ff0000 guibg=NONE
+  hi SpellCap guifg=#ff0000 guibg=NONE
+  hi SpellLocal guifg=#ff5f00 guibg=NONE
+  hi SpellRare guifg=#ff5f5f guibg=NONE
   hi Statement guifg=#000080 guibg=bg
   hi StatusLine gui=bold guifg=#000000 guibg=#ffffff
   hi StatusLineNC guifg=#a3a3a3 guibg=#a8a8a8

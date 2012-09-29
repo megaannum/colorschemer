@@ -4,7 +4,7 @@
 " Name: thinkpad_nerdtree
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:57:06
+" Date: 2012-09-29 13:20:58
 "----------------------------------------------------------
 
 set background=dark

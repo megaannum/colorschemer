@@ -4,7 +4,7 @@
 " Name: python
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:53:23
+" Date: 2012-09-29 13:18:01
 "----------------------------------------------------------
 
 set background=light

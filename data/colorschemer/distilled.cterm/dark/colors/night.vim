@@ -4,7 +4,7 @@
 " Name: night
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:51:26
+" Date: 2012-09-29 13:16:28
 "----------------------------------------------------------
 
 set background=dark

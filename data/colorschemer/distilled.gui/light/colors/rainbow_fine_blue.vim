@@ -4,7 +4,7 @@
 " Name: rainbow_fine_blue
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:49:04
+" Date: 2012-09-29 13:42:29
 "----------------------------------------------------------
 
 set background=light

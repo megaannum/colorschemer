@@ -4,7 +4,7 @@
 " Name: candy
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:35:21
+" Date: 2012-09-29 13:31:33
 "----------------------------------------------------------
 
 set background=dark

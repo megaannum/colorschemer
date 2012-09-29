@@ -4,7 +4,7 @@
 " Name: synic
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:56:21
+" Date: 2012-09-29 13:20:22
 "----------------------------------------------------------
 
 set background=dark
@@ -36,8 +36,8 @@ if has("gui_running")
   hi MoreMsg gui=NONE guibg=bg
   hi NonText gui=NONE guifg=Cyan4 guibg=Black
   hi Operator guifg=#8673e8 guibg=bg
-  hi Pmenu guifg=none
-  hi PmenuSel guifg=none
+  hi Pmenu guifg=NONE
+  hi PmenuSel guifg=NONE
   hi PmenuThumb gui=reverse guibg=NONE
   hi PreProc guifg=#ffa0a0 guibg=bg
   hi Question gui=NONE guifg=LimeGreen guibg=bg

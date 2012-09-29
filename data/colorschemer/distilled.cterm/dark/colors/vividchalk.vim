@@ -4,7 +4,7 @@
 " Name: vividchalk
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:58:34
+" Date: 2012-09-29 13:22:08
 "----------------------------------------------------------
 
 set background=dark

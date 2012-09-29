@@ -4,7 +4,7 @@
 " Name: southernlights
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:55:53
+" Date: 2012-09-29 13:20:00
 "----------------------------------------------------------
 
 set background=dark
@@ -43,9 +43,9 @@ if has("gui_running")
   hi SignColumn guibg=#585858
   hi Special guifg=#ffd75f
   hi SpecialKey guifg=#00ffff
-  hi SpellBad guifg=#ff0000 guibg=none
-  hi SpellLocal guifg=#00ff00 guibg=none
-  hi SpellRare guifg=#ff00ff guibg=none
+  hi SpellBad guifg=#ff0000 guibg=NONE
+  hi SpellLocal guifg=#00ff00 guibg=NONE
+  hi SpellRare guifg=#ff00ff guibg=NONE
   hi Statement gui=NONE guifg=yellow
   hi StatusLine gui=NONE guifg=white guibg=#4e4e4e
   hi StatusLineNC gui=NONE guifg=black guibg=#4e4e4e

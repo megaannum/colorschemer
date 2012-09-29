@@ -4,7 +4,7 @@
 " Name: chela_light
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:43:53
+" Date: 2012-09-29 13:10:28
 "----------------------------------------------------------
 
 set background=light

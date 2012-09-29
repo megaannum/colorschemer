@@ -4,7 +4,7 @@
 " Name: habilight
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:40:51
+" Date: 2012-09-29 13:35:56
 "----------------------------------------------------------
 
 set background=light

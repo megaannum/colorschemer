@@ -4,7 +4,7 @@
 " Name: darkspectrum
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:37:26
+" Date: 2012-09-29 13:33:12
 "----------------------------------------------------------
 
 set background=dark

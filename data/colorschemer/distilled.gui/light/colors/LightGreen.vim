@@ -4,7 +4,7 @@
 " Name: LightGreen
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:33:49
+" Date: 2012-09-29 13:30:19
 "----------------------------------------------------------
 
 set background=light

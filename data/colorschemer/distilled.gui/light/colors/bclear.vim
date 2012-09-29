@@ -4,7 +4,7 @@
 " Name: bclear
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:34:23
+" Date: 2012-09-29 13:30:46
 "----------------------------------------------------------
 
 set background=light

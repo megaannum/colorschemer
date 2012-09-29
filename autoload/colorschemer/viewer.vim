@@ -5,7 +5,7 @@
 " Summary:       View Color Schemes
 " Author:        Richard Emberson <richard.n.embersonATgmailDOTcom>
 " Last Modified: 09/30/2012
-" Version:       1.0
+" Version:       1.1
 "
 " Tested on vim/gvim 7.3 on Linux
 "
@@ -830,10 +830,8 @@ function! colorschemer#viewer#Viewer(cpath)
   function! GenerateFormPDLAction(...) dict
     let pos = a:1
 "call forms#logforce("GenerateFormPDLAction: pos=".pos)
-    let [cs, id] = self.cspopdown.__choices[pos]
-"GOOD
-"    execute "colorscheme " . cs
-let g:selected_colorscheme = cs
+    let [cs, _] = self.cspopdown.__choices[pos]
+    let g:selected_colorscheme = cs
     call forms#AppendInput({ 'type': 'ReDrawAll' })
   endfunction
 
@@ -874,6 +872,10 @@ let g:selected_colorscheme = cs
         \ ]
   endfunction
   let pdl_action.cspopdown = cspopdown
+
+  " set selected colorscheme to the current popdownlist selection
+  let [cs, _] = choices[l:pos]
+  let g:selected_colorscheme = cs
 
   function! CSButtonAction(...) dict
     let cspopdown = self.cspopdown

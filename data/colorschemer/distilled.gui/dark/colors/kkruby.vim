@@ -4,7 +4,7 @@
 " Name: kkruby
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:42:44
+" Date: 2012-09-29 13:37:26
 "----------------------------------------------------------
 
 set background=dark

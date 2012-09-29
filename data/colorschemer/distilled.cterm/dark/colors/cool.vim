@@ -4,7 +4,7 @@
 " Name: cool
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:44:26
+" Date: 2012-09-29 13:10:55
 "----------------------------------------------------------
 
 set background=dark

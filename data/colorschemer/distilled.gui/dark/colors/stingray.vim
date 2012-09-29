@@ -4,7 +4,7 @@
 " Name: stingray
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:52:21
+" Date: 2012-09-29 13:45:08
 "----------------------------------------------------------
 
 set background=dark

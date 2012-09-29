@@ -4,7 +4,7 @@
 " Name: vim-online
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:58:29
+" Date: 2012-09-29 13:22:04
 "----------------------------------------------------------
 
 set background=light

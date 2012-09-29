@@ -4,7 +4,7 @@
 " Name: seoul
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:54:48
+" Date: 2012-09-29 13:19:08
 "----------------------------------------------------------
 
 set background=dark

@@ -4,7 +4,7 @@
 " Name: guepardo
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:40:42
+" Date: 2012-09-29 13:35:48
 "----------------------------------------------------------
 
 set background=light

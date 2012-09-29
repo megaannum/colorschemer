@@ -4,7 +4,7 @@
 " Name: blazer
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:43:13
+" Date: 2012-09-29 13:09:57
 "----------------------------------------------------------
 
 set background=dark
@@ -36,9 +36,9 @@ if has("gui_running")
   hi PreProc guifg=#8AB6EE
   hi Search gui=italic guifg=NONE guibg=#2b2b2b
   hi Special guifg=#8AB6EE
-  hi SpellBad guifg=#D70000 guibg=none
-  hi SpellCap gui=underline guifg=#D0D0FF guibg=none
-  hi SpellRare gui=underline guifg=#D75F87 guibg=none
+  hi SpellBad guifg=#D70000 guibg=NONE
+  hi SpellCap gui=underline guifg=#D0D0FF guibg=NONE
+  hi SpellRare gui=underline guifg=#D75F87 guibg=NONE
   hi Statement gui=NONE guifg=#FF2847
   hi String guifg=#30DF78
   hi Title guifg=#CCCCCC

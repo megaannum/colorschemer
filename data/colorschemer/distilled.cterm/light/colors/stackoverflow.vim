@@ -4,7 +4,7 @@
 " Name: stackoverflow
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:56:04
+" Date: 2012-09-29 13:20:08
 "----------------------------------------------------------
 
 set background=light

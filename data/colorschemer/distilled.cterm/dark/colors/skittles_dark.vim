@@ -4,7 +4,7 @@
 " Name: skittles_dark
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:55:26
+" Date: 2012-09-29 13:19:38
 "----------------------------------------------------------
 
 set background=dark

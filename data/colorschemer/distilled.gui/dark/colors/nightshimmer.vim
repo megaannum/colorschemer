@@ -4,7 +4,7 @@
 " Name: nightshimmer
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:46:34
+" Date: 2012-09-29 13:40:30
 "----------------------------------------------------------
 
 set background=dark

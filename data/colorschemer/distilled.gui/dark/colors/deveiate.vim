@@ -4,7 +4,7 @@
 " Name: deveiate
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:38:05
+" Date: 2012-09-29 13:33:43
 "----------------------------------------------------------
 
 set background=dark

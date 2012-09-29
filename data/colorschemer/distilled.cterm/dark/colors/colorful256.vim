@@ -4,7 +4,7 @@
 " Name: colorful256
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:44:20
+" Date: 2012-09-29 13:10:50
 "----------------------------------------------------------
 
 set background=dark

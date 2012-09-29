@@ -4,7 +4,7 @@
 " Name: rtl
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:50:13
+" Date: 2012-09-29 13:43:25
 "----------------------------------------------------------
 
 set background=dark

@@ -4,7 +4,7 @@
 " Name: darkdevel
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:44:51
+" Date: 2012-09-29 13:11:14
 "----------------------------------------------------------
 
 set background=dark

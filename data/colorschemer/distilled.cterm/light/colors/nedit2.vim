@@ -4,7 +4,7 @@
 " Name: nedit2
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:51:01
+" Date: 2012-09-29 13:16:08
 "----------------------------------------------------------
 
 set background=light

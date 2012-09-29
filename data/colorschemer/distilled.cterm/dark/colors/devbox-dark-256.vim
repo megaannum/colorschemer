@@ -4,7 +4,7 @@
 " Name: devbox-dark-256
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:45:25
+" Date: 2012-09-29 13:11:41
 "----------------------------------------------------------
 
 set background=dark
@@ -39,7 +39,7 @@ if has("gui_running")
   hi Number guifg=#ff8700
   hi Operator guifg=#afd75f
   hi Pmenu guifg=#d0d0d0
-  hi PmenuSel guifg=none
+  hi PmenuSel guifg=NONE
   hi PreCondit guifg=#d75fd7
   hi Repeat guifg=#afd75f
   hi SpecialChar guifg=#ffffff

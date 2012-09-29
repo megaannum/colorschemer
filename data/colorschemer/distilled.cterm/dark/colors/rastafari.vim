@@ -4,7 +4,7 @@
 " Name: rastafari
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:53:40
+" Date: 2012-09-29 13:18:15
 "----------------------------------------------------------
 
 set background=dark
@@ -55,10 +55,10 @@ if has("gui_running")
   hi SignColumn guifg=#8888ff guibg=bg
   hi Special guifg=#ff8800 guibg=bg
   hi SpecialKey guifg=#ffff60 guibg=bg
-  hi SpellBad guibg=none
-  hi SpellCap guibg=none
-  hi SpellLocal guibg=none
-  hi SpellRare guibg=none
+  hi SpellBad guibg=NONE
+  hi SpellCap guibg=NONE
+  hi SpellLocal guibg=NONE
+  hi SpellRare guibg=NONE
   hi Statement guifg=#dddddd guibg=bg
   hi StatusLine gui=bold guifg=#66ff66 guibg=#008000
   hi String guifg=#aa2222 guibg=bg

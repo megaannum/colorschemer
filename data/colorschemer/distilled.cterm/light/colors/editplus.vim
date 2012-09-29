@@ -4,7 +4,7 @@
 " Name: editplus
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:46:00
+" Date: 2012-09-29 13:12:09
 "----------------------------------------------------------
 
 set background=light

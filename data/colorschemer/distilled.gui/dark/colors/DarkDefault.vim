@@ -4,7 +4,7 @@
 " Name: DarkDefault
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:33:43
+" Date: 2012-09-29 13:30:14
 "----------------------------------------------------------
 
 set background=dark

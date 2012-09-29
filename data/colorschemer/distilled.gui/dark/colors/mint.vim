@@ -4,7 +4,7 @@
 " Name: mint
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:44:39
+" Date: 2012-09-29 13:38:58
 "----------------------------------------------------------
 
 set background=dark

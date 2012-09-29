@@ -4,7 +4,7 @@
 " Name: dull
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:38:24
+" Date: 2012-09-29 13:33:58
 "----------------------------------------------------------
 
 set background=light

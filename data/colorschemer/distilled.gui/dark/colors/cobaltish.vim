@@ -4,7 +4,7 @@
 " Name: cobaltish
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:36:07
+" Date: 2012-09-29 13:32:09
 "----------------------------------------------------------
 
 set background=dark

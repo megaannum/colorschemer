@@ -4,7 +4,7 @@
 " Name: tropikos
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:57:39
+" Date: 2012-09-29 13:21:25
 "----------------------------------------------------------
 
 set background=dark

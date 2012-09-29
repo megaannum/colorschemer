@@ -4,7 +4,7 @@
 " Name: mirodark
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:50:15
+" Date: 2012-09-29 13:15:32
 "----------------------------------------------------------
 
 set background=light
@@ -62,10 +62,10 @@ if has("gui_running")
   hi SpecialChar guifg=#ff0000
   hi SpecialComment guifg=#ff0000
   hi SpecialKey guifg=Cyan
-  hi SpellBad gui=NONE guibg=none
-  hi SpellCap gui=NONE guibg=none
-  hi SpellLocal gui=NONE guibg=none
-  hi SpellRare gui=NONE guibg=none
+  hi SpellBad gui=NONE guibg=NONE
+  hi SpellCap gui=NONE guibg=NONE
+  hi SpellLocal gui=NONE guibg=NONE
+  hi SpellRare gui=NONE guibg=NONE
   hi Statement guifg=#ffff60
   hi StatusLine guifg=#000000 guibg=#e5e5e5
   hi StatusLineNC guifg=#000000 guibg=#4d4d4d

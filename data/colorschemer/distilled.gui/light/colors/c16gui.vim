@@ -4,7 +4,7 @@
 " Name: c16gui
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:35:11
+" Date: 2012-09-29 13:31:24
 "----------------------------------------------------------
 
 set background=light

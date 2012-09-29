@@ -4,7 +4,7 @@
 " Name: kib_plastic
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:48:42
+" Date: 2012-09-29 13:14:19
 "----------------------------------------------------------
 
 set background=light

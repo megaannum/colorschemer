@@ -4,7 +4,7 @@
 " Name: gaea
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:39:51
+" Date: 2012-09-29 13:35:07
 "----------------------------------------------------------
 
 set background=light

@@ -4,7 +4,7 @@
 " Name: chrysoprase
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:35:48
+" Date: 2012-09-29 13:31:54
 "----------------------------------------------------------
 
 set background=light

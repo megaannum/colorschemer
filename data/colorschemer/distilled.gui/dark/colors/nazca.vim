@@ -4,7 +4,7 @@
 " Name: nazca
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:45:39
+" Date: 2012-09-29 13:39:45
 "----------------------------------------------------------
 
 set background=dark

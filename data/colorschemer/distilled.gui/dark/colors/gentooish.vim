@@ -4,7 +4,7 @@
 " Name: gentooish
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:39:57
+" Date: 2012-09-29 13:35:13
 "----------------------------------------------------------
 
 set background=dark

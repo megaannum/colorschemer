@@ -4,7 +4,7 @@
 " Name: tolerable
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:53:51
+" Date: 2012-09-29 13:46:22
 "----------------------------------------------------------
 
 set background=light

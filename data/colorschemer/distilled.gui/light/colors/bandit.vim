@@ -4,7 +4,7 @@
 " Name: bandit
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:34:17
+" Date: 2012-09-29 13:30:42
 "----------------------------------------------------------
 
 set background=light

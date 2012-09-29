@@ -4,7 +4,7 @@
 " Name: google-prettify
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:46:54
+" Date: 2012-09-29 13:12:53
 "----------------------------------------------------------
 
 set background=light

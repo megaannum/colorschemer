@@ -4,7 +4,7 @@
 " Name: midnight2
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:44:35
+" Date: 2012-09-29 13:38:55
 "----------------------------------------------------------
 
 set background=dark

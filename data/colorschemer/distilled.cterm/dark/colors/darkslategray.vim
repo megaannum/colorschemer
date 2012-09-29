@@ -4,7 +4,7 @@
 " Name: darkslategray
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:45:01
+" Date: 2012-09-29 13:11:23
 "----------------------------------------------------------
 
 set background=dark

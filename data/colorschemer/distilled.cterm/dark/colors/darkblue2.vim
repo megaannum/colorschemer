@@ -4,7 +4,7 @@
 " Name: darkblue2
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:44:46
+" Date: 2012-09-29 13:11:10
 "----------------------------------------------------------
 
 set background=dark

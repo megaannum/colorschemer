@@ -4,7 +4,7 @@
 " Name: wood
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:56:30
+" Date: 2012-09-29 13:48:32
 "----------------------------------------------------------
 
 set background=light

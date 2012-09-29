@@ -4,7 +4,7 @@
 " Name: manuscript
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:49:37
+" Date: 2012-09-29 13:15:03
 "----------------------------------------------------------
 
 set background=dark

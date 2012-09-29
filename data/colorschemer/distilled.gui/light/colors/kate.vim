@@ -4,7 +4,7 @@
 " Name: kate
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:42:30
+" Date: 2012-09-29 13:37:15
 "----------------------------------------------------------
 
 set background=light

@@ -4,7 +4,7 @@
 " Name: neopro
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:45:50
+" Date: 2012-09-29 13:39:54
 "----------------------------------------------------------
 
 set background=dark

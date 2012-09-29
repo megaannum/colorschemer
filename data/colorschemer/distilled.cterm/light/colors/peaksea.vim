@@ -4,7 +4,7 @@
 " Name: peaksea
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:52:36
+" Date: 2012-09-29 13:17:24
 "----------------------------------------------------------
 
 set background=light
@@ -49,10 +49,10 @@ if has("gui_running")
   hi SignColumn guifg=fg guibg=#90e090
   hi Special guifg=#907000
   hi SpecialKey guifg=#1050a0
-  hi SpellBad guibg=none
-  hi SpellCap guibg=none
-  hi SpellLocal guibg=none
-  hi SpellRare guibg=none
+  hi SpellBad guibg=NONE
+  hi SpellCap guibg=NONE
+  hi SpellLocal guibg=NONE
+  hi SpellRare guibg=NONE
   hi Statement guifg=#2060a8
   hi StatusLine gui=bold guifg=fg guibg=#a6caf0
   hi StatusLineNC gui=bold guifg=fg guibg=#c0c0c0

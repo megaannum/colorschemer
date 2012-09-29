@@ -4,7 +4,7 @@
 " Name: risto
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:54:08
+" Date: 2012-09-29 13:18:37
 "----------------------------------------------------------
 
 set background=light
@@ -37,8 +37,8 @@ if has("gui_running")
   hi ShowMarksHLm gui=bold guifg=#AAAA77 guibg=#111111
   hi ShowMarksHLo gui=bold guifg=#AAAA77 guibg=#111111
   hi ShowMarksHLu gui=bold guifg=#AAAA77 guibg=#111111
-  hi SpellBad guifg=#ff0000 guibg=none
-  hi SpellLocal guifg=#cd0000 guibg=none
+  hi SpellBad guifg=#ff0000 guibg=NONE
+  hi SpellLocal guifg=#cd0000 guibg=NONE
   hi StatusLine guifg=#ffffff guibg=#6c6c6c
   hi StatusLineNC guifg=#000000 guibg=#6c6c6c
   hi String guifg=#87ffaf

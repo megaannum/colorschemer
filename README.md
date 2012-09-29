@@ -64,10 +64,10 @@ were pretty simple). Then using the distill.vim script, running it
 from both Vim in and Xterm (the cterm configuration) and GVim (the gui
 configuration) it generated the following number of color scheme files:
 
-*   486 cterm dark color scheme files
-*   290 cterm light color scheme files
-*   487 gui dark color scheme files
-*   275 gui light color scheme files
+*   491 cterm dark color scheme files
+*   286 cterm light color scheme files
+*   495 gui dark color scheme files
+*   268 gui light color scheme files
 
 There is no claim that they are all unique or (at least currently) that
 all dark ones actually have dark backgrounds and all light ones have

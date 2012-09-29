@@ -4,7 +4,7 @@
 " Name: thegoodluck
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:53:29
+" Date: 2012-09-29 13:46:04
 "----------------------------------------------------------
 
 set background=light

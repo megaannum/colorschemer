@@ -4,7 +4,7 @@
 " Name: amethyst
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:42:42
+" Date: 2012-09-29 13:09:32
 "----------------------------------------------------------
 
 set background=light

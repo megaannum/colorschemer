@@ -4,7 +4,7 @@
 " Name: colorful
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:44:19
+" Date: 2012-09-29 13:10:49
 "----------------------------------------------------------
 
 set background=light

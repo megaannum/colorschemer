@@ -4,7 +4,7 @@
 " Name: cobalt
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:36:04
+" Date: 2012-09-29 13:32:06
 "----------------------------------------------------------
 
 set background=dark

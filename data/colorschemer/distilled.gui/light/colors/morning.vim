@@ -4,7 +4,7 @@
 " Name: morning
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:45:08
+" Date: 2012-09-29 13:39:20
 "----------------------------------------------------------
 
 set background=light

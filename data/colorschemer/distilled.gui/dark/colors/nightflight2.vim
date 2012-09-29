@@ -4,7 +4,7 @@
 " Name: nightflight2
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:46:27
+" Date: 2012-09-29 13:40:24
 "----------------------------------------------------------
 
 set background=dark

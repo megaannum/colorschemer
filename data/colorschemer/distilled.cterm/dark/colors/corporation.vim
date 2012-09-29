@@ -4,7 +4,7 @@
 " Name: corporation
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:44:28
+" Date: 2012-09-29 13:10:56
 "----------------------------------------------------------
 
 set background=dark

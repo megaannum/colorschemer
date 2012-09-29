@@ -4,7 +4,7 @@
 " Name: peppers
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:52:38
+" Date: 2012-09-29 13:17:26
 "----------------------------------------------------------
 
 set background=dark

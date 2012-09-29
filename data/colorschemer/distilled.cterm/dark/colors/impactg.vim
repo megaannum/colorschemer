@@ -4,7 +4,7 @@
 " Name: impactg
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:48:07
+" Date: 2012-09-29 13:13:50
 "----------------------------------------------------------
 
 set background=dark

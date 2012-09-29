@@ -4,7 +4,7 @@
 " Name: calmar256-dark
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:43:39
+" Date: 2012-09-29 13:10:17
 "----------------------------------------------------------
 
 set background=dark
@@ -36,7 +36,7 @@ if has("gui_running")
   hi PmenuThumb guifg=#ffff00
   hi Special guibg=#1c1c1c
   hi SpecialChar guifg=#afff5f
-  hi SpellBad guibg=none
+  hi SpellBad guibg=NONE
   hi SpellCap guifg=#00ff00 guibg=#303030
   hi SpellLocal guifg=#ffff5f guibg=#1c1c1c
   hi SpellRare guifg=#5fff00 guibg=#121212

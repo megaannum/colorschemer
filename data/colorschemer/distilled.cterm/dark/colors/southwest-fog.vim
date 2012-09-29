@@ -4,7 +4,7 @@
 " Name: southwest-fog
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:55:56
+" Date: 2012-09-29 13:20:02
 "----------------------------------------------------------
 
 set background=dark

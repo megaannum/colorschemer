@@ -4,7 +4,7 @@
 " Name: xoria256m
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:56:48
+" Date: 2012-09-29 13:48:46
 "----------------------------------------------------------
 
 set background=dark

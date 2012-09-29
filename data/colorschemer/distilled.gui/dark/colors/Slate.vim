@@ -4,7 +4,7 @@
 " Name: Slate
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:33:54
+" Date: 2012-09-29 13:30:23
 "----------------------------------------------------------
 
 set background=dark

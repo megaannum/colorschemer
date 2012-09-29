@@ -4,7 +4,7 @@
 " Name: jhdark
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:48:28
+" Date: 2012-09-29 13:14:08
 "----------------------------------------------------------
 
 set background=dark

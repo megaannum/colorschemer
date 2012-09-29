@@ -4,7 +4,7 @@
 " Name: 256-jungle
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:33:39
+" Date: 2012-09-29 13:30:11
 "----------------------------------------------------------
 
 set background=dark

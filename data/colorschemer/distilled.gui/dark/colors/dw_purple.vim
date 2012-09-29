@@ -4,7 +4,7 @@
 " Name: dw_purple
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:38:34
+" Date: 2012-09-29 13:34:06
 "----------------------------------------------------------
 
 set background=dark

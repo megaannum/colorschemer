@@ -4,7 +4,7 @@
 " Name: strawimodo
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:56:10
+" Date: 2012-09-29 13:20:13
 "----------------------------------------------------------
 
 set background=dark

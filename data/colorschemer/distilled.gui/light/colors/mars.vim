@@ -4,7 +4,7 @@
 " Name: mars
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:44:08
+" Date: 2012-09-29 13:38:33
 "----------------------------------------------------------
 
 set background=light

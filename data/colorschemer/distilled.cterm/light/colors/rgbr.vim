@@ -4,7 +4,7 @@
 " Name: rgbr
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 14:54:04
+" Date: 2012-09-29 13:18:34
 "----------------------------------------------------------
 
 set background=light

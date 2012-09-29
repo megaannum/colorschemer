@@ -4,7 +4,7 @@
 " Name: emacs
 " ColorSchemerVersion: 1.0
 " User: emberson
-" Date: 2012-09-24 16:39:09
+" Date: 2012-09-29 13:34:34
 "----------------------------------------------------------
 
 set background=light
