@@ -4,8 +4,8 @@
 " File:          distill.vim
 " Summary:       View Color Schemes
 " Author:        Richard Emberson <richard.n.embersonATgmailDOTcom>
-" Last Modified: 09/30/2012
-" Version:       1.1
+" Last Modified: 10/05/2012
+" Version:       1.2
 "
 " Tested on vim/gvim 7.3 on Linux
 "
@@ -605,7 +605,7 @@ function! colorschemer#distill#MakeColorSchemeData(csname, infilepath)
   let cslight.groups = colorschemer#util#CaptureHighlights()
   let cslight_background = &background
 
-"call forms#logforce("MakeColorSchemeData: cslight_background=".cslight_background)
+" call forms#logforce("MakeColorSchemeData: cslight_background=".cslight_background)
 " call forms#logforce("MakeColorSchemeData: ".csname." cslight=".string(cslight.groups))
 "
   let g:forms_reload_highlights_on_colorscheme_event = 1
@@ -724,10 +724,13 @@ function! colorschemer#distill#MakeColorSchemeData(csname, infilepath)
     "
     let darknormalrgb = s:GetNormalRGB(csdark)
     let lightnormalrgb = s:GetNormalRGB(cslight)
+" call forms#logforce("MakeColorSchemeData: darknormalrgb=".darknormalrgb)
+" call forms#logforce("MakeColorSchemeData: lightnormalrgb=".lightnormalrgb)
+
     let dark_normal_background = colorschemer#util#IsDark(darknormalrgb)
     let light_normal_background = colorschemer#util#IsDark(lightnormalrgb)
-"call forms#logforce("MakeColorSchemeData: dark_normal_background=".dark_normal_background)
-"call forms#logforce("MakeColorSchemeData: light_normal_background=".light_normal_background)
+" call forms#logforce("MakeColorSchemeData: dark_normal_background=".dark_normal_background)
+" call forms#logforce("MakeColorSchemeData: light_normal_background=".light_normal_background)
 
     if dark_normal_background == 'none' && light_normal_background == 'none'
 
@@ -853,11 +856,20 @@ function! colorschemer#distill#MakeColorSchemeData(csname, infilepath)
       let rval = [ csdark, cslight ]
 
     else
+"call forms#logforce("MakeColorSchemeData: output both")
       " has both dark and light Normal group
-      let cslight.background = 'light'
-      let csdark.background = 'dark'
-      let cslight.csname = csname
-      let csdark.csname = csname
+      let cslight.background = light_normal_background
+      let csdark.background = dark_normal_background
+      if light_normal_background == 'light'
+        let cslight.csname = csname
+      else
+        let cslight.csname = csname . '_light'
+      endif
+      if dark_normal_background == 'dark'
+        let csdark.csname = csname
+      else
+        let csdark.csname = csname . '_dark'
+      endif
       call s:DistillColorScheme(cslight)
       call s:DistillColorScheme(csdark)
 
@@ -1376,7 +1388,7 @@ function! colorschemer#distill#GenerateDistilledColorScheme(cs)
   let lines = []
 
   let csname = a:cs.csname
-call forms#logforce("GenerateDistilledColorScheme: csname=".csname)
+"call forms#logforce("GenerateDistilledColorScheme: csname=".csname)
   " header info
   call add(lines, '"----------------------------------------------------------')
   call add(lines, '" Created by ColorSchemer')
@@ -1569,7 +1581,7 @@ endfunction
 "   outfiledir  : String output directory
 "---------------------------------------------------------------------------
 function! colorschemer#distill#MakeDistilledColorSchemeFile(csname, infiledir, outfiledir)
-call forms#logforce("MakeDistilledColorSchemeFile: csname=".a:csname)
+"call forms#logforce("MakeDistilledColorSchemeFile: csname=".a:csname)
   let csfile = a:csname . '.vim'
   " let infilepath = a:infiledir . '/' . csfile
   let infilepath = a:infiledir
@@ -1588,7 +1600,7 @@ endif
     if ! isdirectory(outdir)
       call mkdir(outdir, "p")
     endif
-    let outfilepath = outdir . "/" . csfile
+    let outfilepath = outdir . "/" . csdict.csname . '.vim'
     call s:WriteDistilledColorScheme(outfilepath, lines)
   endfor
 
@@ -1598,7 +1610,7 @@ endif
   for csdict in csdictList
     let groups = csdict.distilled.links
     for group in keys(groups)
-call forms#logforce("MakeDistilledColorSchemeFile: cleanup: ". group)
+" call forms#logforce("MakeDistilledColorSchemeFile: cleanup: ". group)
       execute "hi! link " . group . " NONE"
       execute "hi! default link " . group . " NONE"
       execute "hi clear " . group
@@ -1616,7 +1628,7 @@ endfunction
 "   outfiledir  : String output directory
 "---------------------------------------------------------------------------
 function! colorschemer#distill#MakeDistilledColorSchemeFiles(infiledir, outfiledir)
-call forms#logforce("MakeDistilledColorSchemeFiles: TOP")
+"call forms#logforce("MakeDistilledColorSchemeFiles: TOP")
   let path = "*.vim"
   let allfiles = split(globpath(a:infiledir.'/colors', path), "\n")
   for f in allfiles
@@ -1672,6 +1684,9 @@ call colorschemer#distill#MakeDistilledColorSchemeFile(csname, infiledir, outfil
 let csname="dark-ruby"
 call colorschemer#distill#MakeDistilledColorSchemeFile(csname, infiledir, outfiledir)
 endif
+
+let csname="seoul"
+call colorschemer#distill#MakeDistilledColorSchemeFile(csname, infiledir, outfiledir)
 
 endfunction
 

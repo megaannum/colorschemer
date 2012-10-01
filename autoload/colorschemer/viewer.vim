@@ -4,8 +4,8 @@
 " File:          viewer.vim
 " Summary:       View Color Schemes
 " Author:        Richard Emberson <richard.n.embersonATgmailDOTcom>
-" Last Modified: 09/30/2012
-" Version:       1.1
+" Last Modified: 10/05/2012
+" Version:       1.2
 "
 " Tested on vim/gvim 7.3 on Linux
 "
@@ -707,8 +707,15 @@ endfunction
 function! colorschemer#viewer#Viewer(cpath)
 "call forms#logforce("colorschemer#viewer#Viewer: TOP")
   if ! isdirectory(a:cpath)
-    let msg = "ERROR: colorschemer#viewer#Viewer does not exist: ".a:cpath
-    echo msg
+    let msg = "ERROR: colorschemer#viewer#Viewer is not a directory: ".a:cpath
+    call forms#dialog#info#Make([msg])
+    return
+  elseif ! isdirectory(a:cpath . '/colors')
+    let textlines = [
+          \ "ERROR: colorschemer#viewer#Viewer No sub-directory:",
+          \  "".a:cpath . "/colors"
+          \ ]
+    call forms#dialog#info#Make(textlines)
     return
   endif
 
@@ -843,6 +850,16 @@ function! colorschemer#viewer#Viewer(cpath)
 
   " split at NL, Ignore case for VMS and windows, sort on name
   let l:names = sort(map(split(l:n, "\n"), 'substitute(v:val, "\\c.*[/\\\\:\\]]\\([^/\\\\:]*\\)\\.vim", "\\1", "")'), 1)
+
+  if empty(l:names)
+    let textlines = [
+          \ "ERROR: colorschemer#viewer#Viewer empty colors directory:",
+          \  "".a:cpath . "/colors"
+          \ ]
+    call forms#dialog#info#Make(textlines)
+    let &rtp=l:rtp
+    return
+  endif
 
 " call forms#logforce("colorschemer#viewer#Viewer:  l:names=". string(l:names))
   let choices = []
@@ -992,6 +1009,7 @@ function! colorschemer#viewer#Viewer(cpath)
 
   let form = forms#newForm({'body': bg })
   call form.run()
+  let &rtp=l:rtp
 endfunction
 
 "---------------------------------------------------------------------------

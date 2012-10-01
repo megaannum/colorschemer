@@ -61,7 +61,7 @@ Using the vim_color_schemes_downloader bash script mentioned above, I was
 able to identify some 687 color scheme files (though there maybe a couple
 of duplications - the bash script unique identification heuristics 
 were pretty simple). Then using the distill.vim script, running it
-from both Vim in and Xterm (the cterm configuration) and GVim (the gui
+from both Vim in an Xterm (the cterm configuration) and GVim (the gui
 configuration) it generated the following number of color scheme files:
 
 *   491 cterm dark color scheme files
@@ -71,10 +71,9 @@ configuration) it generated the following number of color scheme files:
 
 There is no claim that they are all unique or (at least currently) that
 all dark ones actually have dark backgrounds and all light ones have
-light backgrounds (this is still a work in progress). But, the 
-distill.vim script did take the original color scheme files most of which
-were written for GVim and produce comparable color scheme files for
-Vim.
+light backgrounds. But, the distill.vim script did take the original 
+color scheme files most of which were written for GVim and produce 
+comparable color scheme files for Vim.
 
 A small number of original color scheme files has VimL code that
 specifically forbade a user from using them if they were not running

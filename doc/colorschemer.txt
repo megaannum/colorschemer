@@ -1,7 +1,7 @@
-*colorschemer.txt*          For Vim version 7.3     Last change: 2012 Oct 01
+*colorschemer.txt*          For Vim version 7.3     Last change: 2012 Oct 05
 
 Author:      Richard Emberson 
-Version:     1.1
+Version:     1.2
 Title:       Color Schemer Utilities
 Homepage:    TODO
 
@@ -532,6 +532,9 @@ To access any of the above color scheme viewing options use:
 
 ==============================================================================
 9. Release notes                                  *colorschemer-release-notes*
+1.2    - Fix: ~
+    Viewer uses Info Dialog to report errors about path.
+    Distill generates '_light'/'_dark' files as needed.
 1.1    - Fix: ~
     Did not always display correct color scheme first time.
     Now when distilled dark and light are different but both have the
