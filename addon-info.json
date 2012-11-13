@@ -7,7 +7,7 @@
 "git://github.com/megaannum/colorschemer.git", "branch" : "master"},
   "dependencies" : {
     "self": {},
-    "forms": {},
+    "forms": {}
   },
   "description" : "Manage Vim color schemes"
 }
